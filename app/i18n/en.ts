@@ -119,6 +119,12 @@ const en = {
         "No favorites have been added yet. Tap the heart on an episode to add it to your favorites!",
     },
   },
+  teacherNavigator: {
+    home: "Home",
+    course: "Course",
+    timetable: "Timetable",
+    profile: "Profile"
+  }
   // @demo remove-block-end
 }
 
