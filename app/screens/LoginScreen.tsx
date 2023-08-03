@@ -23,7 +23,7 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
     // Here is where you could fetch credentials from keychain or storage
     // and pre-fill the form fields.
     setAuthEmail("ignite@infinite.red")
-    setAuthPassword("ign1teIsAwes0m3")
+    setAuthPassword("ign1te")
   }, [])
 
   const error = isSubmitted ? validationError : ""
