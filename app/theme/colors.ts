@@ -38,6 +38,13 @@ const palette = {
 } as const
 
 export const colors = {
+  primary: "#5375E2",
+  black: "black",
+  white: "white",
+  error: "red",
+  errorText: "red",
+  buttonBackground: "black",
+  buttonTitle: "black",
   /**
    * The palette is available to use, but prefer using the name.
    * This is only included for rare, one-off cases. Try to use
@@ -75,7 +82,7 @@ export const colors = {
   /**
    * Error messages.
    */
-  error: palette.angry500,
+
   /**
    * Error Background.
    *
