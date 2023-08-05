@@ -7,7 +7,6 @@ import {
   TextStyle,
   ViewStyle,
 } from "react-native"
-import { GooglePlaceData, GooglePlaceDetail } from "react-native-google-places-autocomplete"
 
 // extend text component with react native text props
 export interface TextInputProps extends RNTextInputProps {
