@@ -1,7 +1,7 @@
 import React from "react"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { TextStyle, ViewStyle } from "react-native"
-import Icon from "@expo/vector-icons/FontAwesome"
+import Icon from "react-native-vector-icons/FontAwesome"
 // import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { translate } from "../i18n"
 // import { Screen, Text } from "app/components"
@@ -28,8 +28,8 @@ export function TabNavigator() {
         headerShown: false,
         tabBarHideOnKeyboard: true,
         tabBarStyle: [$tabBar, { height: bottom + 70 }],
-        tabBarActiveTintColor: colors.text,
-        tabBarInactiveTintColor: colors.text,
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: "grey",
         tabBarLabelStyle: $tabBarLabel,
         tabBarItemStyle: $tabBarItem,
       }}
@@ -39,7 +39,9 @@ export function TabNavigator() {
         component={TeacherStack}
         options={{
           tabBarLabel: translate("teacherNavigator.course"),
-          tabBarIcon: ({ focused }) => <Icon icon="users" color={"green"} size={30} />,
+          tabBarIcon: ({ focused }) => (
+            <Icon name="users" color={focused ? colors.primary : "grey"} size={30} />
+          ),
         }}
       />
     </Tab.Navigator>
