@@ -45,6 +45,10 @@ export const colors = {
   errorText: "red",
   buttonBackground: "black",
   buttonTitle: "black",
+
+  dropdownBackground: "white",
+  inputFieldBorder: "rgba(0,0,0,0.3)",
+  inputFieldBackground: "rgba(211,211,211,0.5)",
   /**
    * The palette is available to use, but prefer using the name.
    * This is only included for rare, one-off cases. Try to use
