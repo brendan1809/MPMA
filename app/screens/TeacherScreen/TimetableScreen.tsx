@@ -1,7 +1,7 @@
 import React from "react"
 import { observer } from "mobx-react-lite"
 import { ViewStyle } from "react-native"
-import { Screen, Text } from "app/components"
+import { Screen } from "app/components"
 import { spacing } from "app/theme"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
@@ -17,9 +17,7 @@ export const TimetableScreen = observer(function CourseScreen() {
     <Screen 
     style={$screenContentContainer} 
     preset="auto" >
-      <Text
-      text="Time Table"
-      />
+      
     </Screen>
   )
 })

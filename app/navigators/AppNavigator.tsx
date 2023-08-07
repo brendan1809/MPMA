@@ -8,7 +8,6 @@ import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer,
-  NavigatorScreenParams, // @demo remove-current-line
 } from "@react-navigation/native"
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
 import { observer } from "mobx-react-lite"
@@ -16,7 +15,6 @@ import React from "react"
 import { useColorScheme } from "react-native"
 import Config from "../config"
 // import { useStores } from "../models" // @demo remove-current-line
-import { DemoTabParamList } from "./DemoNavigator" // @demo remove-current-line
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import { colors } from "app/theme"
 // import { TeacherNavigator } from "./TeacherNavigator"
