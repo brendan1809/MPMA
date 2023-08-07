@@ -20,10 +20,10 @@ export const TeacherStack = () => {
       headerTitleAlign: "center",
     })}
     >
-      <Stack.Screen name="Course" component={CourseScreen} options={{ title: "Coursework"}}/>
-      <Stack.Screen name="Coursework" component={CourseworkScreen} options={{ title: "Manage Coursework"}}/>
-      <Stack.Screen name="Submission" component={SubmissionScreen} options={{ title: "Submission"}}/>
-      <Stack.Screen name="Timetable" component={TimetableScreen} options={{ title: "Timetable"}}/>
+      {/* <Stack.Screen name="Course" component={CourseScreen} options={{ title: "Coursework"}}/> */}
+      <Stack.Screen name="Coursework" component={CourseworkScreen} options={{ title: "Coursework"}}/>
+      {/* <Stack.Screen name="Submission" component={SubmissionScreen} options={{ title: "Submission"}}/> */}
+      {/* <Stack.Screen name="Timetable" component={TimetableScreen} options={{ title: "Timetable"}}/> */}
 
     </Stack.Navigator>
   )
