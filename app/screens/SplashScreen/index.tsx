@@ -13,7 +13,7 @@ export const SplashScreen = ({ navigation }) => {
         <Button
           style={style.button}
           onPress={() => {
-            onNavigate("TeacherStack")
+            onNavigate("TabNavigator")
           }}
           title={"Sign In"}
         />
