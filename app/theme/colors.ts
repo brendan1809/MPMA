@@ -43,8 +43,8 @@ export const colors = {
   white: "white",
   error: "red",
   errorText: "red",
-  buttonBackground: "black",
-  buttonTitle: "black",
+  buttonBackground: "#5375E2",
+  buttonTitle: "white",
 
   dropdownBackground: "white",
   inputFieldBorder: "rgba(0,0,0,0.3)",

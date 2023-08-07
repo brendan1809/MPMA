@@ -21,6 +21,7 @@ import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import { colors } from "app/theme"
 // import { TeacherNavigator } from "./TeacherNavigator"
 import { TabNavigator } from "./TabNavigator"
+import { SplashScreen } from "app/screens"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -36,12 +37,8 @@ import { TabNavigator } from "./TabNavigator"
  *   https://reactnavigation.org/docs/typescript/#organizing-types
  */
 export type AppStackParamList = {
-  Welcome: undefined
-  Login: undefined // @demo remove-current-line
-  Demo: NavigatorScreenParams<DemoTabParamList> // @demo remove-current-line
-  // 🔥 Your screens go here
+  Splash: undefined
   TabNavigator: undefined
-  // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 
 /**
@@ -67,7 +64,7 @@ const AppStack = observer(function AppStack() {
       screenOptions={{ headerShown: false, navigationBarColor: colors.background }}
       // initialRouteName={isAuthenticated ? "Welcome" : "Login"} // @demo remove-current-line
     >
-      {/* <Stack.Screen name="TeacherNavigator" component={TeacherNavigator} /> */}
+      <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
     </Stack.Navigator>
   )
