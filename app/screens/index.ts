@@ -1,5 +1,4 @@
-export * from "./WelcomeScreen"
-
+export * from "./SplashScreen"
 // export other screens here
 export * from "./TeacherScreen/CourseScreen"
 export * from "./TeacherScreen/CourseworkScreen"

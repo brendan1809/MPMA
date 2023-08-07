@@ -1,7 +1,7 @@
 import React from "react"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { TextStyle , ViewStyle } from "react-native"
-import { Icon } from "../components"
+import { TextStyle, ViewStyle } from "react-native"
+import Icon from "@expo/vector-icons/FontAwesome"
 // import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { translate } from "../i18n"
 // import { Screen, Text } from "app/components"
@@ -22,9 +22,9 @@ const Tab = createBottomTabNavigator<TabNavigatorParamList>()
 export function TabNavigator() {
   const { bottom } = useSafeAreaInsets()
 
-return (
-  <Tab.Navigator
-    screenOptions={{
+  return (
+    <Tab.Navigator
+      screenOptions={{
         headerShown: false,
         tabBarHideOnKeyboard: true,
         tabBarStyle: [$tabBar, { height: bottom + 70 }],
@@ -33,21 +33,17 @@ return (
         tabBarLabelStyle: $tabBarLabel,
         tabBarItemStyle: $tabBarItem,
       }}
-  >
-
-    <Tab.Screen
-      name="TeacherStack"
-      component={TeacherStack}
-      options={{
-        tabBarLabel: translate("teacherNavigator.course"),
-        tabBarIcon: ({ focused }) => (
-          <Icon icon="community" color={focused && colors.tint} size={30} />
-        ),
-      }}
-    />
-
-  </Tab.Navigator>
-)
+    >
+      <Tab.Screen
+        name="TeacherStack"
+        component={TeacherStack}
+        options={{
+          tabBarLabel: translate("teacherNavigator.course"),
+          tabBarIcon: ({ focused }) => <Icon icon="users" color={"green"} size={30} />,
+        }}
+      />
+    </Tab.Navigator>
+  )
 }
 
 const $tabBar: ViewStyle = {
