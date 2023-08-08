@@ -1,29 +1,29 @@
 import React from "react"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { CourseScreen, CourseworkScreen, SubmissionScreen, TimetableScreen } from "app/screens"
+import { CourseworkScreen, AssignmentScreen, LectureScreen } from "app/screens"
 
 export type TeacherStackParamList = {
-  Course: undefined
   Coursework: undefined
   Submission: undefined
-  Timetable: undefined
+  Lecture: undefined
 }
 
 const Stack = createNativeStackNavigator<TeacherStackParamList>()
 
 export const TeacherStack = () => {
   return (
-    <Stack.Navigator screenOptions={({
+    <Stack.Navigator 
+    initialRouteName="Coursework"
+    screenOptions={({
       headerShown: true,
       gestureEnabled: true,
       title: "",
       headerTitleAlign: "center",
     })}
     >
-      {/* <Stack.Screen name="Course" component={CourseScreen} options={{ title: "Coursework"}}/> */}
       <Stack.Screen name="Coursework" component={CourseworkScreen} options={{ title: "Coursework"}}/>
-      <Stack.Screen name="Submission" component={SubmissionScreen} options={{ title: "Add Submission"}}/>
-      {/* <Stack.Screen name="Timetable" component={TimetableScreen} options={{ title: "Timetable"}}/> */}
+      <Stack.Screen name="Submission" component={AssignmentScreen} options={{ title: "Add Assignment"}}/>
+      <Stack.Screen name="Lecture" component={LectureScreen} options={{ title: "Add Slide"}}/>
 
     </Stack.Navigator>
   )
