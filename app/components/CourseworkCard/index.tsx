@@ -3,8 +3,9 @@ import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import { CardProps } from './props';
 import styles from './styles';
 import { Button } from '../Button';
+import Icon from "react-native-vector-icons/FontAwesome"
 
-export const Card = (props: CardProps) => {
+export const CourseworkCard = (props: CardProps) => {
     const { headerText, contentItems, footerButtonText, onFooterPress } = props
     
     const renderItem = ({ item }: { item: string }) => {
@@ -12,9 +13,14 @@ export const Card = (props: CardProps) => {
           <View style={styles.itemContainer}>
             <Text style={styles.itemText}>{item}</Text>
             {/* Add Icon button(s) here */}
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Button</Text>
-            </TouchableOpacity>
+            <View style={styles.iconButtonsContainer}>
+              <TouchableOpacity>
+                <Icon name="edit" size={35}/>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Icon name="remove" size={35} color="red" style={styles.iconButton}/>
+              </TouchableOpacity>
+            </View>
           </View>
         );
       };

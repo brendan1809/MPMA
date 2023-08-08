@@ -55,4 +55,12 @@ export default StyleSheet.create({
     color: '#333',
     fontSize: 16,
   },
+  iconButtonsContainer: {
+    flexDirection: 'row', // Align buttons horizontally
+    justifyContent: 'flex-end', // Position buttons to the right
+    alignItems: 'center', // Vertically align buttons
+  },
+  iconButton: {
+    marginLeft: 4, // Add margin between buttons
+  },
 });
