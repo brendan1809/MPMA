@@ -22,7 +22,7 @@ export const TeacherStack = () => {
     >
       {/* <Stack.Screen name="Course" component={CourseScreen} options={{ title: "Coursework"}}/> */}
       <Stack.Screen name="Coursework" component={CourseworkScreen} options={{ title: "Coursework"}}/>
-      {/* <Stack.Screen name="Submission" component={SubmissionScreen} options={{ title: "Submission"}}/> */}
+      <Stack.Screen name="Submission" component={SubmissionScreen} options={{ title: "Add Submission"}}/>
       {/* <Stack.Screen name="Timetable" component={TimetableScreen} options={{ title: "Timetable"}}/> */}
 
     </Stack.Navigator>
