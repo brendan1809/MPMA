@@ -14,6 +14,10 @@ export const StuSubmissionScreenStyles = StyleSheet.create({
     borderBottomWidth: 1,
     marginVertical: spacing.md,
   },
+  screenContentContainer: {
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.md,
+  },
   sectionHeader: {
     fontSize: 24,
     fontWeight: "bold",
