@@ -7,12 +7,14 @@ import { translate } from "../i18n"
 import { colors, spacing, typography } from "../theme"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { TeacherStack } from "./TeacherStack"
+import { UserStack } from "./UserStack"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
 
 export type TabNavigatorParamList = {
   TeacherStack: undefined
   // this is where to define the bottom tab navigation
+  UserStack: undefined
 }
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>()
@@ -39,6 +41,16 @@ export function TabNavigator() {
           tabBarLabel: translate("teacherNavigator.course"),
           tabBarIcon: ({ focused }) => (
             <Icon name="book" color={focused ? colors.primary : "grey"} size={30} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="UserStack"
+        component={UserStack}
+        options={{
+          tabBarLabel: translate("userNavigator.course"),
+          tabBarIcon: ({ focused }) => (
+            <Icon name="users" color={focused ? colors.primary : "red"} size={30} />
           ),
         }}
       />

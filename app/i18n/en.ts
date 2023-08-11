@@ -124,6 +124,12 @@ const en = {
     course: "Course",
     timetable: "Timetable",
     profile: "Profile"
+  },
+  userNavigator: {
+    home: "Home",
+    course: "Course",
+    timetable: "Timetable",
+    profile: "Profile"
   }
   // @demo remove-block-end
 }
