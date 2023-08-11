@@ -4,9 +4,7 @@ import { TextStyle, ViewStyle } from "react-native"
 import Icon from "react-native-vector-icons/FontAwesome"
 // import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { translate } from "../i18n"
-// import { Screen, Text } from "app/components"
 import { colors, spacing, typography } from "../theme"
-// import { CourseScreen } from "../screens"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { TeacherStack } from "./TeacherStack"
 import { UserStack } from "./UserStack"
@@ -26,7 +24,7 @@ export function TabNavigator() {
 
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={{ 
         headerShown: false,
         tabBarHideOnKeyboard: true,
         tabBarStyle: [$tabBar, { height: bottom + 70 }],
