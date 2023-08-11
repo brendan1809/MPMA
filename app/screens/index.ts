@@ -1,7 +1,10 @@
 export * from "./SplashScreen"
 // export other screens here
-// export * from "./TeacherScreen/CourseScreen"
+// Teacher's
 export * from "./CourseworkScreen"
-export * from "./AssignmentScreen"
-// export * from "./TeacherScreen/TimetableScreen"
+export * from "./SubmissionScreen"
 export * from "./LectureScreen"
+export * from "./AssigmentScreen"
+export * from "./StudentGradingScreen"
+export * from "./GradingSelectScreen"
+export * from "./TeacherTimetableScreen"

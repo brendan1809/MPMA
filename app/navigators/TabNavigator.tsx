@@ -38,7 +38,7 @@ export function TabNavigator() {
         options={{
           tabBarLabel: translate("teacherNavigator.course"),
           tabBarIcon: ({ focused }) => (
-            <Icon name="users" color={focused ? colors.primary : "grey"} size={30} />
+            <Icon name="book" color={focused ? colors.primary : "grey"} size={30} />
           ),
         }}
       />
