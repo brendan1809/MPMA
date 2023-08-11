@@ -5,7 +5,7 @@ import { View } from "react-native"
 import { style } from "./styles"
 import DocumentUpload from "app/components/DocumentUpload"
 
-export const AssignmentScreen = ({ navigation }) => {
+export const SubmissionScreen = ({ navigation }) => {
   const onNavigate = (method) => {
     navigation.navigate(method)
   }
