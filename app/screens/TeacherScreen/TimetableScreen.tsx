@@ -6,7 +6,7 @@ import { spacing } from "app/theme"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
 
-export const TimetableScreen = observer(function CourseScreen() {
+export const TimetableScreen = observer(function TimetableScreen() {
   // Pull in one of our MST stores
   // const { someStore, anotherStore } = useStores()
 
