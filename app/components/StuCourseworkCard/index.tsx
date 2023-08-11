@@ -9,10 +9,8 @@ export const Card = (props: CardProps) => {
     const renderItem = ({ item }: { item: string }) => {
         return (
           <View style={styles.itemContainer}>
-            <Text style={styles.itemText}>{item}</Text>
-            {/* Add Icon button(s) here */}
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Button</Text>
+            <TouchableOpacity style={styles.itemContainer}>
+              <Text style={styles.itemText}>{item}</Text>
             </TouchableOpacity>
           </View>
         );

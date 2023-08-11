@@ -1,6 +1,9 @@
 import React from "react"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { StuCourseworkScreen, StuSubmissionScreen } from "app/screens"
+
+// import screen
+import { StuSubmissionScreen } from "app/screens/StuSubmissionScreen"
+import { StuCourseworkScreen } from "app/screens/StuCourseworkScreen"
 
 export type UserStackParamList = {
   StudentCoursework: undefined
@@ -19,7 +22,7 @@ export const UserStack = () => {
       
     })}
     >
-      {/* <Stack.Screen name="StudentCoursework" component={StuCourseworkScreen} options={{ title: "Student Coursework"}} /> */}
+      <Stack.Screen name="StudentCoursework" component={StuCourseworkScreen} options={{ title: "Student Coursework"}} />
       <Stack.Screen name="StudentSubmission" component={StuSubmissionScreen} options={{ title: "Student Submission"}}/>
 
     </Stack.Navigator>
