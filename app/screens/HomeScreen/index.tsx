@@ -56,24 +56,26 @@ export const HomeScreen = ({ navigation }) => {
           )}
         />
         <Text style={style.headingText}>News</Text>
-        <NewsCard
-          imageUrl="https://fakeimg.pl/350x200/?text=Hellos"
-          title="Haloha"
-          datePublished="12/12/2021"
-          onPress={() => {
-            onNavigate("NewsDetails")
-          }}
-        />
-        <NewsCard
-          imageUrl="https://fakeimg.pl/350x200/?text=Hellos"
-          title="Haloha"
-          datePublished="12/12/2021"
-        />
-        <NewsCard
-          imageUrl="https://fakeimg.pl/350x200/?text=Hellos"
-          title="Haloha"
-          datePublished="12/12/2021"
-        />
+        <View style={{ width: "100%" }}>
+          <NewsCard
+            imageUrl="https://fakeimg.pl/350x200/?text=Hellos"
+            title="Haloha"
+            datePublished="12/12/2021"
+            onPress={() => {
+              onNavigate("NewsDetails")
+            }}
+          />
+          <NewsCard
+            imageUrl="https://fakeimg.pl/350x200/?text=Hellos"
+            title="Haloha"
+            datePublished="12/12/2021"
+          />
+          <NewsCard
+            imageUrl="https://fakeimg.pl/350x200/?text=Hellos"
+            title="Haloha"
+            datePublished="12/12/2021"
+          />
+        </View>
         <Button title="Select Image" onPress={() => {
           selectImage()
         }} />

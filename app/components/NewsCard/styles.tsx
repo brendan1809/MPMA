@@ -1,6 +1,6 @@
 /* eslint-disable react-native/sort-styles */
 /* eslint-disable react-native/no-color-literals */
-import { Dimensions, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   cardContainer: {
@@ -8,8 +8,6 @@ export default StyleSheet.create({
     borderRadius: 8,
     elevation: 2,
     marginBottom: 12,
-    padding: 16,
-    width: Dimensions.get("window").width - 2 * 20,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -18,7 +16,8 @@ export default StyleSheet.create({
   cardImage: {
     width: '100%',
     height: 125, // Set the desired image height
-    marginBottom: 8,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8
   },
   cardTitle: {
     fontSize: 18,
