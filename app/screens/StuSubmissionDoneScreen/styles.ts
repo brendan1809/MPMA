@@ -1,13 +1,7 @@
 import { StyleSheet } from "react-native"
 import { spacing } from "app/theme"
 
-export const StuSubmissionScreenStyles = StyleSheet.create({
-  // eslint-disable-next-line react-native/no-color-literals
-  question: {
-    color: "#0000EE",
-    fontSize: 18,
-    marginBottom: spacing.md,
-  },
+export const style = StyleSheet.create({
   title: {
     fontSize: 18,
     marginBottom: spacing.md,
@@ -33,7 +27,20 @@ export const StuSubmissionScreenStyles = StyleSheet.create({
     fontSize: 14,
     marginBottom: spacing.lg,
   },
-  button: {
-    marginTop: 15
+  fileName: {
+    fontSize: 18,
+    fontStyle: "italic",
+    marginBottom: spacing.md,
+  },
+  // eslint-disable-next-line react-native/no-color-literals
+  submit: {
+    color: "#08F26E",
+    fontSize: 18,
+    marginBottom: spacing.md,
+  },
+  grade: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: spacing.md,
   }
 })
