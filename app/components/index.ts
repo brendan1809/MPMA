@@ -12,3 +12,6 @@ export * from "./ImagePicker"
 
 export * from "./StudentGradingCard"
 export * from "./DropdownPicker"
+
+export * from "./NewsCard"
+

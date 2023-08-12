@@ -8,6 +8,7 @@ import { colors, spacing, typography } from "../theme"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { TeacherStack } from "./TeacherStack"
 import { UserStack } from "./UserStack"
+import { HomeScreen } from "app/screens"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
 
@@ -15,6 +16,7 @@ export type TabNavigatorParamList = {
   TeacherStack: undefined
   // this is where to define the bottom tab navigation
   UserStack: undefined
+  Home: undefined
 }
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>()
@@ -24,7 +26,7 @@ export function TabNavigator() {
 
   return (
     <Tab.Navigator
-      screenOptions={{ 
+      screenOptions={{
         headerShown: false,
         tabBarHideOnKeyboard: true,
         tabBarStyle: [$tabBar, { height: bottom + 70 }],
@@ -34,6 +36,16 @@ export function TabNavigator() {
         tabBarItemStyle: $tabBarItem,
       }}
     >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarLabel: "Home",
+          tabBarIcon: ({ focused }) => (
+            <Icon name="home" color={focused ? colors.primary : "grey"} size={30} />
+          ),
+        }}
+      />
       <Tab.Screen
         name="TeacherStack"
         component={TeacherStack}
