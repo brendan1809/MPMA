@@ -1,16 +1,11 @@
-import { ViewStyle } from "react-native";
-import { spacing } from "app/theme";
+import { StyleSheet } from "react-native"
 
-export const $screenContentContainer: ViewStyle = {
-  paddingVertical: spacing.md,
-  paddingHorizontal: spacing.md,
-};
-
-// Define additional styles as needed
-// For example:
-// export const $headerText = {
-//   fontSize: 18,
-// };
-// export const $contentItem = {
-//   fontSize: 16,
-// };
+export const style = StyleSheet.create({
+  container: {
+    // alignItems: "center",
+    // justifyContent: "center",
+    // minHeight: Dimensions.get("screen").height - 60,
+    padding: 20,
+  },
+  flex: { flex: 1 },
+})

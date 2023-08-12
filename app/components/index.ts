@@ -6,3 +6,6 @@ export * from "./ErrorMessageText"
 export * from "./TextInput"
 export * from "./DocumentUpload"
 export * from "./CourseworkCard"
+export * from "./StuProfileCard"
+export * from "./ImagePicker"
+
