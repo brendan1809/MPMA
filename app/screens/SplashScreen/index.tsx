@@ -10,7 +10,7 @@ export const SplashScreen = ({ navigation }) => {
   return (
     <Screen style={style.flex}>
       <View style={style.container}>
-        <Button
+        {/* <Button
           style={style.button}
           onPress={() => {
             onNavigate("TabNavigator")
@@ -23,6 +23,27 @@ export const SplashScreen = ({ navigation }) => {
             onNavigate("Register")
           }}
           title={"Sign Up"}
+        /> */}
+        <Button
+          style={style.button}
+          onPress={() => {
+            onNavigate("Login")
+          }}
+          title={"Student Login"}
+        />
+        <Button
+          style={style.button}
+          onPress={() => {
+            onNavigate("Login")
+          }}
+          title={"Teacher Login"}
+        />
+        <Button
+          style={style.button}
+          onPress={() => {
+            onNavigate("Login")
+          }}
+          title={"Admin Login"}
         />
       </View>
     </Screen>

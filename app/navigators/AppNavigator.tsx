@@ -19,7 +19,7 @@ import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import { colors } from "app/theme"
 // import { TeacherNavigator } from "./TeacherNavigator"
 import { TabNavigator } from "./TabNavigator"
-import { SplashScreen } from "app/screens"
+import { SplashScreen, LoginScreen } from "app/screens"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -37,6 +37,7 @@ import { SplashScreen } from "app/screens"
 export type AppStackParamList = {
   Splash: undefined
   TabNavigator: undefined
+  Login: undefined
 }
 
 /**
@@ -60,16 +61,17 @@ const AppStack = observer(function AppStack() {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false, navigationBarColor: colors.background }}
-      // initialRouteName={isAuthenticated ? "Welcome" : "Login"} // @demo remove-current-line
+    // initialRouteName={isAuthenticated ? "Welcome" : "Login"} // @demo remove-current-line
     >
       <Stack.Screen name="Splash" component={SplashScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
     </Stack.Navigator>
   )
 })
 
 export interface NavigationProps
-  extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
+  extends Partial<React.ComponentProps<typeof NavigationContainer>> { }
 
 export const AppNavigator = observer(function AppNavigator(props: NavigationProps) {
   const colorScheme = useColorScheme()
