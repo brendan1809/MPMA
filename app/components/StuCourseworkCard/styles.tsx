@@ -3,17 +3,6 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  button: {
-    backgroundColor: '#007AFF',
-    borderRadius: 4,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
   cardContainer: {
     backgroundColor: '#fff',
     borderRadius: 8,
