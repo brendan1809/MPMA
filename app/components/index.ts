@@ -14,4 +14,6 @@ export * from "./StudentGradingCard"
 export * from "./DropdownPicker"
 
 export * from "./NewsCard"
-
+export * from "./FAB"
+export * from "./BannerCard"
+export * from "./TimetableCard"

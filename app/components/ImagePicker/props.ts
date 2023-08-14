@@ -1,4 +1,3 @@
-interface ImagePickerProps {
-    onChange: (selectedImage: File | null) => void;
-  }
-  export default ImagePickerProps;
+export interface ImagePickerProps {
+  onSelectImage: (imagePath: string) => void;
+}

@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Button, Screen, TextInput, Text } from "app/components"
+import { Button, Screen, TextInput, Text, TimetableCard } from "app/components"
 import React from "react"
 import { View, useWindowDimensions } from "react-native"
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
@@ -13,30 +13,95 @@ export const TeacherTimetableScreen = ({ navigation }) => {
         navigation.navigate(method)
     }
 
+    const logText = () => {
+        console.log("Testing")
+    }
+
     const layout = useWindowDimensions();
 
     const MondaySchedule = () => (
         <Screen style={style.flex} preset="auto">
             <View style={style.container}>
-                <Text>Testing 1</Text>
+                <TimetableCard
+                    courseCode="CMC-012-120A"
+                    courseName="Testing Class"
+                    courseTime="10:00 - 12:00"
+                    courseTeacher="Mr. Siva"
+                    isButtonVisible={true}
+                    onButtonPress={() => {
+                        logText()
+                    }}
+                />
             </View>
         </Screen>
     );
 
     const TuesdaySchedule = () => (
-        <View style={{ flex: 1, backgroundColor: '#673ab7' }} />
+        <Screen style={style.flex} preset="auto">
+            <View style={style.container}>
+                <TimetableCard
+                    courseCode="CMC-012-120A"
+                    courseName="Testing Class"
+                    courseTime="10:00 - 12:00"
+                    courseTeacher="Mr. Siva"
+                    isButtonVisible={true}
+                    onButtonPress={() => {
+                        logText()
+                    }}
+                />
+            </View>
+        </Screen>
     );
 
     const WednesdaySchedule = () => (
-        <View style={{ flex: 1, backgroundColor: '#12ab62' }} />
+        <Screen style={style.flex} preset="auto">
+            <View style={style.container}>
+                <TimetableCard
+                    courseCode="CMC-012-120A"
+                    courseName="Testing Class"
+                    courseTime="10:00 - 12:00"
+                    courseTeacher="Mr. Siva"
+                    isButtonVisible={true}
+                    onButtonPress={() => {
+                        logText()
+                    }}
+                />
+            </View>
+        </Screen>
     );
 
     const ThursdaySchedule = () => (
-        <View style={{ flex: 1, backgroundColor: '#36acfe' }} />
+        <Screen style={style.flex} preset="auto">
+            <View style={style.container}>
+                <TimetableCard
+                    courseCode="CMC-012-120A"
+                    courseName="Testing Class"
+                    courseTime="10:00 - 12:00"
+                    courseTeacher="Mr. Siva"
+                    isButtonVisible={true}
+                    onButtonPress={() => {
+                        logText()
+                    }}
+                />
+            </View>
+        </Screen>
     );
 
     const FridaySchedule = () => (
-        <View style={{ flex: 1, backgroundColor: '#13aedf' }} />
+        <Screen style={style.flex} preset="auto">
+            <View style={style.container}>
+                <TimetableCard
+                    courseCode="CMC-012-120A"
+                    courseName="Testing Class"
+                    courseTime="10:00 - 12:00"
+                    courseTeacher="Mr. Siva"
+                    isButtonVisible={true}
+                    onButtonPress={() => {
+                        logText()
+                    }}
+                />
+            </View>
+        </Screen>
     );
 
 
@@ -68,11 +133,6 @@ export const TeacherTimetableScreen = ({ navigation }) => {
     );
 
     return (
-        // <Screen style={style.flex}>
-        //     <View style={style.container}>
-
-        //     </View>
-        // </Screen>
         <TabView
             renderTabBar={renderTabBar}
             navigationState={{ index, routes }}
