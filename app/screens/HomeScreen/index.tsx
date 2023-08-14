@@ -1,31 +1,18 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Button, NewsCard, Screen, Text } from "app/components"
-import React from "react"
-import { Dimensions, View } from "react-native"
+import { Button, NewsCard, Screen, Text, ImagePicker } from "app/components"
+import React, { useState } from "react"
+import { Dimensions, View, Image } from "react-native"
 import { style } from "./styles"
 import Carousel from 'react-native-reanimated-carousel';
 import { SafeAreaView } from "react-native-safe-area-context";
-import ImageCropPicker from "react-native-image-crop-picker";
 
 export const HomeScreen = ({ navigation }) => {
   const onNavigate = (method) => {
     navigation.navigate(method)
   }
 
-  const logText = () => {
-    console.log("Test")
-  }
 
-  const selectImage = () => {
-    ImageCropPicker.openPicker({
-      width: 300,
-      height: 400,
-      cropping: true
-    }).then(image => {
-      console.log(image);
-    });
-  }
 
   const width = Dimensions.get('window').width
   const widthWithPadding = width - 2 * 20;
@@ -61,9 +48,6 @@ export const HomeScreen = ({ navigation }) => {
             imageUrl="https://fakeimg.pl/350x200/?text=Hellos"
             title="Haloha"
             datePublished="12/12/2021"
-            onPress={() => {
-              onNavigate("NewsDetails")
-            }}
           />
           <NewsCard
             imageUrl="https://fakeimg.pl/350x200/?text=Hellos"
@@ -76,9 +60,6 @@ export const HomeScreen = ({ navigation }) => {
             datePublished="12/12/2021"
           />
         </View>
-        <Button title="Select Image" onPress={() => {
-          selectImage()
-        }} />
       </SafeAreaView>
     </Screen>
   )

@@ -1,25 +1,33 @@
-import React, { useState } from 'react';
-import ImagePickerProps from './props';
+import React from 'react';
+import { View } from 'react-native';
+import { ImagePickerProps } from './props';
+import styles from './styles';
+import ImageCropPicker from 'react-native-image-crop-picker';
+import { Button } from '../Button';
 
-export const ImagePicker: React.FC<ImagePickerProps> = ({ onChange }) => {
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+export const ImagePicker = (props: ImagePickerProps) => {
+  const { onSelectImage } = props
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = event.target.files?.[0] || null;
-    setSelectedImage(selectedFile);
-    onChange(selectedFile);
+  const handlePickImage = async () => {
+    try {
+      const image = await ImageCropPicker.openPicker({
+        width: 1920,
+        height: 1080,
+        cropping: true,
+      });
+      onSelectImage(image.path);
+    } catch (error) {
+      console.log('Image picker error:', error);
+    }
   };
 
   return (
-    <div>
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleImageChange}
+    <View>
+      <Button
+        style={styles.button}
+        title='Add an Image'
+        onPress={handlePickImage}
       />
-      {selectedImage && <img src={URL.createObjectURL(selectedImage)} alt="Selected" />}
-    </div>
+    </View>
   );
 };
-
-// export default ImagePicker;

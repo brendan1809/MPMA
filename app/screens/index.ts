@@ -13,4 +13,7 @@ export * from "./TeacherTimetableScreen"
 export * from "./LoginScreen"
 export * from "./HomeScreen"
 export * from "./NewsDetailScreen"
-
+export * from "./AddNewsScreen"
+export * from "./AddBannersScreen"
+export * from "./BannersListScreen"
+export * from "./NewsListScreen"
