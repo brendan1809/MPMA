@@ -62,7 +62,11 @@ const AppStack = observer(function AppStack() {
     >
       <Stack.Screen name="Splash" component={SplashScreen} />
 
-      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+      <Stack.Screen
+        name="ForgotPassword"
+        component={ForgotPasswordScreen}
+        options={{ title: "Forgot Password", headerShown: true }}
+      />
       <Stack.Screen
         name="Login"
         component={LoginScreen}

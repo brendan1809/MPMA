@@ -6,6 +6,7 @@ import {
   KeyboardAvoidingViewProps,
   LayoutChangeEvent,
   Platform,
+  SafeAreaView,
   ScrollView,
   ScrollViewProps,
   StyleProp,
@@ -165,6 +166,8 @@ function ScreenWithScrolling(props: ScreenProps) {
 
   return (
     <ScrollView
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}
       {...{ keyboardShouldPersistTaps, scrollEnabled, ref }}
       {...ScrollViewProps}
       onLayout={(e) => {
@@ -201,20 +204,21 @@ export function Screen(props: ScreenProps) {
 
   return (
     <View style={[$containerStyle, { backgroundColor }, $containerInsets]}>
-      <StatusBar style={statusBarStyle} {...StatusBarProps} />
-
-      <KeyboardAvoidingView
-        behavior={isIos ? "padding" : undefined}
-        keyboardVerticalOffset={keyboardOffset}
-        {...KeyboardAvoidingViewProps}
-        style={[$keyboardAvoidingViewStyle, KeyboardAvoidingViewProps?.style]}
-      >
-        {isNonScrolling(props.preset) ? (
-          <ScreenWithoutScrolling {...props} />
-        ) : (
-          <ScreenWithScrolling {...props} />
-        )}
-      </KeyboardAvoidingView>
+      <SafeAreaView style={$keyboardAvoidingViewStyle}>
+        <StatusBar style={statusBarStyle} {...StatusBarProps} />
+        <KeyboardAvoidingView
+          behavior={isIos ? "padding" : undefined}
+          keyboardVerticalOffset={keyboardOffset}
+          {...KeyboardAvoidingViewProps}
+          style={[$keyboardAvoidingViewStyle, KeyboardAvoidingViewProps?.style]}
+        >
+          {isNonScrolling(props.preset) ? (
+            <ScreenWithoutScrolling {...props} />
+          ) : (
+            <ScreenWithScrolling {...props} />
+          )}
+        </KeyboardAvoidingView>
+      </SafeAreaView>
     </View>
   )
 }

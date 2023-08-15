@@ -141,7 +141,6 @@ export const LoginScreen = ({ navigation }) => {
           style={style.button}
           title="Login"
           onPress={handleSubmit(onSubmit)}
-          title={"Login"}
         />
         <TouchableOpacity
           onPress={() => {
