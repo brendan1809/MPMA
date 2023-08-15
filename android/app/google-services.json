@@ -1,0 +1,40 @@
+
+{
+  "project_info": {
+    "project_number": "286934869301",
+    "project_id": "mpma-5ccb3",
+    "storage_bucket": "mpma-5ccb3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286934869301:android:61a2d5f30662381688587c",
+        "android_client_info": {
+          "package_name": "com.mpma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "286934869301-62ihqdmm2negs0vn9i0t5iikvms3ceeu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNBEKx6AG3k_aGmYfF0g15rCtfXVCBcjw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "286934869301-62ihqdmm2negs0vn9i0t5iikvms3ceeu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
