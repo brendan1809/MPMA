@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button, Screen, Text, TextInput } from "app/components"
 import React from "react"
-import { View } from "react-native"
+import { View, TouchableOpacity } from "react-native"
 import { style } from "./styles"
+// import { TouchableOpacity } from "react-native-gesture-handler"
 
 export const LoginScreen = ({ navigation }) => {
   const onNavigate = (method) => {
@@ -11,7 +12,7 @@ export const LoginScreen = ({ navigation }) => {
   return (
     <Screen style={style.flex}>
       <View style={style.container}>
-        <Text>Login</Text>
+        <Text style={style.headingText}>Login</Text>
         <TextInput
           title="Email" />
         <TextInput
@@ -23,6 +24,11 @@ export const LoginScreen = ({ navigation }) => {
           onPress={() => {
             onNavigate("TabNavigator")
           }} />
+        <TouchableOpacity onPress={() => {
+          onNavigate('ForgotPassword')
+        }}>
+          <Text style={style.text}>Forgot Password?</Text>
+        </TouchableOpacity>
       </View>
     </Screen>
   )
