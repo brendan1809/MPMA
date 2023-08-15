@@ -2,7 +2,7 @@
 import { Dimensions, StyleSheet } from "react-native"
 
 export const style = StyleSheet.create({
-  button: { marginTop: 30 },
+  button: { marginTop: 15 },
   container: {
     alignItems: "center",
     justifyContent: "center",
@@ -15,9 +15,18 @@ export const style = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold"
   },
-  logo: { height: 200, width: 200 },
+  horizontalLine: {
+    borderBottomColor: 'black', // Change this color as needed
+    borderBottomWidth: 1,       // Adjust the thickness of the line
+    marginVertical: 20,         // Add vertical spacing
+  },
+  imageContainer: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center'
+  },
   text: {
-    color: "blue",
+    color: "black",
     fontSize: 16,
     marginVertical: 10,
   },

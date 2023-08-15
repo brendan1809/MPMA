@@ -19,7 +19,7 @@ import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import { colors } from "app/theme"
 // import { TeacherNavigator } from "./TeacherNavigator"
 import { TabNavigator } from "./TabNavigator"
-import { SplashScreen, LoginScreen } from "app/screens"
+import { SplashScreen, LoginScreen, ForgotPasswordScreen } from "app/screens"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -38,6 +38,7 @@ export type AppStackParamList = {
   Splash: undefined
   TabNavigator: undefined
   Login: undefined
+  ForgotPassword: undefined
 }
 
 /**
@@ -65,6 +66,7 @@ const AppStack = observer(function AppStack() {
     >
       <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
     </Stack.Navigator>
   )
