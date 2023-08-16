@@ -16,6 +16,7 @@ import { colors } from "app/theme"
 // import { TeacherNavigator } from "./TeacherNavigator"
 import { TabNavigator } from "./TabNavigator"
 import { SplashScreen, LoginScreen, ForgotPasswordScreen } from "app/screens"
+import { AdminStack } from "./AdminStack"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -35,6 +36,7 @@ export type AppStackParamList = {
   TabNavigator: undefined
   Login: undefined
   ForgotPassword: undefined
+  AdminStack: undefined
 }
 
 /**
@@ -52,9 +54,6 @@ export type AppStackScreenProps<T extends keyof AppStackParamList> = NativeStack
 const Stack = createNativeStackNavigator<AppStackParamList>()
 
 const AppStack = observer(function AppStack() {
-  // @demo remove-block-start
-
-  // @demo remove-block-end
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false, navigationBarColor: colors.background }}
@@ -73,6 +72,7 @@ const AppStack = observer(function AppStack() {
         options={{ title: "Sign In", headerShown: true }}
       />
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
+      <Stack.Screen name="AdminStack" component={AdminStack} />
     </Stack.Navigator>
   )
 })

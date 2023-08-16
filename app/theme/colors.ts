@@ -45,7 +45,7 @@ export const colors = {
   errorText: "red",
   buttonBackground: "#5375E2",
   buttonTitle: "white",
-
+  lightGrey: "rgba(0,0,0,0.2)",
   dropdownBackground: "white",
   inputFieldBorder: "rgba(0,0,0,0.3)",
   inputFieldBackground: "rgba(211,211,211,0.5)",
@@ -70,7 +70,7 @@ export const colors = {
   /**
    * The default color of the screen background.
    */
-  background: palette.neutral200,
+  background: "white",
   /**
    * The default border color.
    */
