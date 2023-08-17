@@ -28,6 +28,7 @@ export const style = StyleSheet.create({
     paddingRight: 10,
   },
   title: {
+    color: colors.black,
     fontSize: 18,
     fontWeight: "600",
     marginBottom: 6,

@@ -13,7 +13,7 @@ export const AdminMenu = observer(() => {
   const { authStore } = useStores()
 
   const data = [
-    { title: "Student", navigateTo: "" },
+    { title: "Student", navigateTo: "AdminStudentList" },
     { title: "Lecturer", navigateTo: "" },
     { title: "Course", navigateTo: "" },
     { title: "Coursework", navigateTo: "" },
