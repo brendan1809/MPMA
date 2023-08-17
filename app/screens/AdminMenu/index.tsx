@@ -14,7 +14,7 @@ export const AdminMenu = observer(() => {
 
   const data = [
     { title: "Student", navigateTo: "AdminStudentList" },
-    { title: "Lecturer", navigateTo: "" },
+    { title: "Lecturer", navigateTo: "AdminLecturerList" },
     { title: "Course", navigateTo: "" },
     { title: "Coursework", navigateTo: "" },
     { title: "Banner", navigateTo: "" },

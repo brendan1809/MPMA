@@ -13,7 +13,7 @@ import { TouchableOpacity } from "react-native-gesture-handler"
 import ImagePicker from "react-native-image-crop-picker"
 import storage from "@react-native-firebase/storage"
 
-export const AdminStudentListEdit = () => {
+export const AdminLecturerListEditScreen = () => {
   const route = useRoute()
   const routeFrom = route?.params?.routeFrom || ""
   const editData = route?.params?.data
@@ -46,20 +46,19 @@ export const AdminStudentListEdit = () => {
 
   useEffect(() => {
     navigation.setOptions({
-      headerTitle: routeFrom === "add" ? "Add Student" : "Edit Student",
+      headerTitle: routeFrom === "add" ? "Add Lecturer" : "Edit Lecturer",
     })
     if (routeFrom === "edit") {
       setValue("fullName", editData?.fullName)
       setValue("phoneNo", editData?.phoneNo)
       setValue("email", editData?.email)
-      setValue("studentId", editData?.studentId)
       setValue("thumbnail", editData?.thumbnail)
     }
   }, [])
 
   const updateUser = async (data) => {
     try {
-      const { fullName, phoneNo, email, studentId, thumbnail } = data
+      const { fullName, phoneNo, email, thumbnail } = data
       // If in edit mode, get the uid of the user to update
       const userId = editData.uid
 
@@ -71,19 +70,18 @@ export const AdminStudentListEdit = () => {
         fullName,
         phoneNo,
         email,
-        studentId,
         thumbnail,
       })
 
-      flash("success", "Student updated successfully")
+      flash("success", "Lecturer updated successfully")
       navigation.goBack()
     } catch {
-      flash("error", "Failed to update student")
+      flash("error", "Failed to update lecturer")
     }
   }
 
   const registerUserWithEmail = async (data) => {
-    const { fullName, phoneNo, email, password, studentId, thumbnail } = data
+    const { fullName, phoneNo, email, password, thumbnail } = data
     try {
       await auth()
         .createUserWithEmailAndPassword(email, password)
@@ -95,19 +93,18 @@ export const AdminStudentListEdit = () => {
               fullName,
               phoneNo,
               email,
-              studentId,
               thumbnail,
-              role: "student",
+              role: "lecturer",
             })
             .then(async () => {
-              flash("success", "Student create successfully")
+              flash("success", "Lecturer create successfully")
               await auth().signOut()
               navigation.goBack()
             })
 
             .catch(() => {
               console.log("error")
-              flash("error", "Error storing student details")
+              flash("error", "Error storing lecturer details")
             })
             .finally(() => {
               setLoading(false)
@@ -211,30 +208,6 @@ export const AdminStudentListEdit = () => {
           }}
         />
 
-        <Controller
-          name="studentId"
-          control={control}
-          rules={{
-            required: "This field is required",
-          }}
-          render={({ field: { onChange, value }, fieldState: { error } }) => {
-            return (
-              <>
-                <TextInput
-                  error={error}
-                  errorMessage={error?.message}
-                  title={"Student ID"}
-                  value={value}
-                  onChangeText={onChange}
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  placeholder={"Please enter student ID"}
-                />
-              </>
-            )
-          }}
-        />
-
         {routeFrom === "add" && (
           <>
             <Controller
@@ -321,7 +294,7 @@ export const AdminStudentListEdit = () => {
                     >
                       <Image
                         source={{ uri: watch("thumbnail") }}
-                        resizeMode="cover"
+                        resizeMode="contain"
                         style={style.uploadImage}
                       />
                     </TouchableOpacity>
