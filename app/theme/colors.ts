@@ -46,6 +46,7 @@ export const colors = {
   buttonBackground: "#5375E2",
   buttonTitle: "white",
   lightGrey: "rgba(0,0,0,0.2)",
+  placeholderText: "rgba(0,0,0,0.6)",
   dropdownBackground: "white",
   inputFieldBorder: "rgba(0,0,0,0.3)",
   inputFieldBackground: "rgba(211,211,211,0.5)",

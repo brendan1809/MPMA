@@ -1,40 +1,38 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
-import React, { useState } from 'react';
-import { View } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { DropdownSelectProps } from './props';
-import { styles } from './styles';
+import React from "react"
+import { View } from "react-native"
+import DropDownPicker, { DropDownPickerProps } from "react-native-dropdown-picker"
+import { styles } from "./styles"
+import { colors } from "app/theme"
 
-export const DropdownPicker = (props: DropdownSelectProps) => {
-    const { items, placeholder, onSelect } = props
+export const DropdownPicker = (props: DropDownPickerProps) => {
+  const { ...restProps } = props
 
-    const [open, setOpen] = useState(false);
-    const [selectedValue, setSelectedValue] = useState<string | null>(null);
-
-    const handleSelect = (value: string) => {
-        setSelectedValue(value);
-        onSelect(value);
-    };
-
-    return (
-        <View style={styles.container}>
-            <DropDownPicker
-                items={items}
-                value={selectedValue}
-                setValue={setSelectedValue}
-                open={open}
-                setOpen={setOpen}
-                placeholder={placeholder}
-                containerStyle={{ height: open === true ? 200 : null }}
-                maxHeight={150}
-                style={{ backgroundColor: '#fafafa' }}
-                labelStyle={{
-                    fontSize: 16,
-                }}
-                autoScroll={true}
-                onSelectItem={(item) => handleSelect(item.value)}
-            />
-        </View>
-    );
-};
+  return (
+    <DropDownPicker
+      listMode="MODAL"
+      searchable={true}
+      style={{
+        alignItems: "center",
+        backgroundColor: colors.inputFieldBackground,
+        borderColor: colors.inputFieldBorder,
+        borderRadius: 8,
+        borderWidth: 1,
+        flexDirection: "row",
+        justifyContent: "center",
+        marginBottom: 6,
+        paddingRight: 10,
+      }}
+      dropDownContainerStyle={{
+        width: 170,
+      }}
+      placeholderStyle={{ color: colors.placeholderText }}
+      labelStyle={{
+        fontSize: 16,
+      }}
+      autoScroll={true}
+      {...restProps} // Pass the rest of the props to the original DropDownPicker
+    />
+  )
+}
