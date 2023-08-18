@@ -39,7 +39,7 @@ export const AdminLecturerListScreen = () => {
       )
 
       // Update the users state with filtered results
-      setUserList(users || filteredUsers)
+      setUserList(searchName ? filteredUsers : users)
       setLoading(false)
     } catch (error) {
       setLoading(false)

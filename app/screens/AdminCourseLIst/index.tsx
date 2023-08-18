@@ -12,11 +12,11 @@ import { colors } from "app/theme"
 export const AdminCourseListScreen = () => {
   const [loading, setLoading] = useState(false)
   const [searchText, setSearchText] = useState("")
-  const [userList, setUserList] = useState([])
+  const [courseList, setCourseList] = useState([])
   const navigation = useNavigation()
   const isFocused = useIsFocused()
 
-  const fetchUsers = async (searchName?: string) => {
+  const fetchCourse = async (searchName?: string) => {
     setLoading(true)
     try {
       const courseCollectionRef = firestore().collection("course")
@@ -31,12 +31,11 @@ export const AdminCourseListScreen = () => {
       })
 
       // Perform partial search on the client-side
-      const filteredCourses = courses.filter((user) =>
-        user.name?.toLowerCase().includes(searchName?.toLowerCase()),
+      const filteredCourses = courses.filter((course) =>
+        course.name?.toLowerCase().includes(searchName?.toLowerCase()),
       )
 
-      // Update the users state with filtered results
-      setUserList(courses || filteredCourses)
+      setCourseList(searchName ? filteredCourses : courses)
       setLoading(false)
     } catch (error) {
       setLoading(false)
@@ -55,7 +54,7 @@ export const AdminCourseListScreen = () => {
       await removeStudentFromCourse(courseId)
       // After successful deletion, fetch the updated users
       flash("success", "Delete course successfully")
-      fetchUsers()
+      fetchCourse()
       setLoading(false)
     } catch (error) {
       setLoading(false)
@@ -79,7 +78,7 @@ export const AdminCourseListScreen = () => {
   }
 
   useEffect(() => {
-    fetchUsers()
+    fetchCourse()
   }, [isFocused])
 
   return (
@@ -93,14 +92,14 @@ export const AdminCourseListScreen = () => {
           onChangeText={setSearchText}
           containerStyle={style.searchContainer}
           onSubmitEditing={() => {
-            fetchUsers(searchText)
+            fetchCourse(searchText)
           }}
         />
         {loading ? (
           <ActivityIndicator size={"large"} color={"white"} />
         ) : (
           <FlatList
-            data={userList}
+            data={courseList}
             ListEmptyComponent={() => {
               return (
                 <View style={style.emptyContainer}>
