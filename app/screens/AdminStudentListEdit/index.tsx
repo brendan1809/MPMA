@@ -1,7 +1,7 @@
 import { Screen, TextInput, Button, ErrorMessage, Text } from "app/components"
 import React, { useEffect, useState } from "react"
 
-import { Dimensions, Image, View } from "react-native"
+import { Dimensions, Image, View, TouchableOpacity } from "react-native"
 import { style } from "./styles"
 import { Controller, useForm } from "react-hook-form"
 import auth from "@react-native-firebase/auth"
@@ -9,7 +9,6 @@ import firestore from "@react-native-firebase/firestore"
 import flash from "app/config/flash"
 import { useNavigation, useRoute } from "@react-navigation/native"
 import { toLower, upperFirst } from "lodash"
-import { TouchableOpacity } from "react-native-gesture-handler"
 import ImagePicker from "react-native-image-crop-picker"
 import storage from "@react-native-firebase/storage"
 
