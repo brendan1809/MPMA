@@ -48,11 +48,11 @@ export const AdminCourseListScreen = () => {
     setLoading(true)
     try {
       // Reference the Firestore collection for users
-      const usersCollectionRef = firestore().collection("courses")
+      const courseCollectionRef = firestore().collection("course")
 
       // Delete the user document based on the user ID
-      await usersCollectionRef.doc(courseId).delete()
-
+      await courseCollectionRef.doc(courseId).delete()
+      await removeStudentFromCourse(courseId)
       // After successful deletion, fetch the updated users
       flash("success", "Delete course successfully")
       fetchUsers()
@@ -63,8 +63,22 @@ export const AdminCourseListScreen = () => {
     }
   }
 
+  const removeStudentFromCourse = async (courseId) => {
+    try {
+      const studentCoureworkRef = firestore().collection("studentCourse")
+
+      // Find and delete the document where courseId and studentId match
+      const querySnapshot = await studentCoureworkRef.where("courseId", "==", courseId).get()
+
+      querySnapshot.forEach(async (doc) => {
+        await doc.ref.delete()
+      })
+    } catch {
+      flash("error", "Failed to remove student from course")
+    }
+  }
+
   useEffect(() => {
-    // Fetch users initially (without search)
     fetchUsers()
   }, [isFocused])
 
