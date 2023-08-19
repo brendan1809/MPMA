@@ -16,8 +16,8 @@ import {
   AdminNewsListScreen,
   AdminStudentListEdit,
   AdminStudentListScreen,
-  HomeScreen,
-  NewsDetailScreen,
+  AdminTimeTableScreen,
+  AdminTimetableEditScreen,
 } from "app/screens"
 
 export type AdminParamList = {
@@ -36,6 +36,8 @@ export type AdminParamList = {
   AdminCourseworkList: undefined
   AdminCourseworkListEdit: undefined
   AdminCourseworkDetailList: undefined
+  AdminTimetable: undefined
+  AdminTimetableEdit: undefined
 }
 const Stack = createNativeStackNavigator<AdminParamList>()
 
@@ -94,6 +96,13 @@ export const AdminStack = () => {
         component={AdminCourseworkDetailListScreen}
         options={{ title: "Coursework Detail List" }}
       />
+
+      <Stack.Screen
+        name="AdminTimetable"
+        component={AdminTimeTableScreen}
+        options={{ title: "Timetable" }}
+      />
+      <Stack.Screen name="AdminTimetableEdit" component={AdminTimetableEditScreen} />
     </Stack.Navigator>
   )
 }

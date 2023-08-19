@@ -53,6 +53,7 @@ export const AdminCourseListScreen = () => {
       await courseCollectionRef.doc(courseId).delete()
       await deleteCoursework(courseId)
       await removeStudentFromCourse(courseId)
+      await deleteTimetable(courseId)
       // After successful deletion, fetch the updated users
       flash("success", "Delete course successfully")
       fetchCourse()
@@ -60,6 +61,26 @@ export const AdminCourseListScreen = () => {
     } catch (error) {
       setLoading(false)
       flash("error", "Failed to delete course")
+    }
+  }
+
+  const deleteTimetable = async (courseId) => {
+    try {
+      const timetableCollectionRef = firestore().collection("timetable")
+
+      // Query the timetable collection for entries with the specified courseId
+      const querySnapshot = await timetableCollectionRef.where("courseId", "==", courseId).get()
+
+      // Delete each timetable entry
+      const batch = firestore().batch()
+      querySnapshot.forEach((doc) => {
+        const timetableRef = timetableCollectionRef.doc(doc.id)
+        batch.delete(timetableRef)
+      })
+      await batch.commit()
+    } catch (error) {
+      console.error("Error deleting timetable entries:", error)
+      throw error
     }
   }
 

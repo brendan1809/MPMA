@@ -4,8 +4,7 @@ import { View } from "react-native"
 import { style } from "./styles"
 
 export const CourseworkScreen = ({ navigation }) => {
-
-  const contentItems = ['Item 1', 'Item 2', 'Item 3'];
+  const contentItems = ["Item 1", "Item 2", "Item 3"]
 
   const onNavigate = (method) => {
     navigation.navigate(method)
@@ -36,9 +35,12 @@ export const CourseworkScreen = ({ navigation }) => {
           footerButtonText="Add Tutorial"
         />
         {/* The button Below should be implemented in the item is pressed */}
-        <Button title="Go to Assignment" onPress={() => {
-          onNavigate("Assignment")
-        }} />
+        <Button
+          title="Go to Assignment"
+          onPress={() => {
+            onNavigate("Assignment")
+          }}
+        />
         {/* The button Below should be implemented in the tab */}
         <Button title="Go to Timetable" onPress={() => {
           onNavigate("TeacherTimetable")
