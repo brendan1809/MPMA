@@ -6,6 +6,9 @@ import {
   AdminBannerListScreen,
   AdminCourseListEdit,
   AdminCourseListScreen,
+  AdminCourseworkDetailListScreen,
+  AdminCourseworkListEditScreen,
+  AdminCourseworkListScreen,
   AdminLecturerListEditScreen,
   AdminLecturerListScreen,
   AdminMenu,
@@ -29,9 +32,10 @@ export type AdminParamList = {
   AdminBannerListEdit: undefined
   AdminNewsList: undefined
   AdminNewsListEdit: undefined
-  // testing
-  // Home: undefined
-  // NewsDetail: undefined
+
+  AdminCourseworkList: undefined
+  AdminCourseworkListEdit: undefined
+  AdminCourseworkDetailList: undefined
 }
 const Stack = createNativeStackNavigator<AdminParamList>()
 
@@ -78,9 +82,17 @@ export const AdminStack = () => {
         options={{ title: "News List" }}
       />
       <Stack.Screen name="AdminNewsListEdit" component={AdminNewsListEdit} />
-      {/* Testing */}
-      {/* <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="NewsDetail" component={NewsDetailScreen} options={{ title: "News Detail" }} /> */}
+     
+        name="AdminCourseworkList"
+        component={AdminCourseworkListScreen}
+        options={{ title: "Coursework List" }}
+      />
+      <Stack.Screen name="AdminCourseworkListEdit" component={AdminCourseworkListEditScreen} />
+      <Stack.Screen
+        name="AdminCourseworkDetailList"
+        component={AdminCourseworkDetailListScreen}
+        options={{ title: "Coursework Detail List" }}
+      />
     </Stack.Navigator>
   )
 }

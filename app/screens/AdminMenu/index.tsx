@@ -20,6 +20,10 @@ export const AdminMenu = observer(() => {
     { title: "Banner", navigateTo: "AdminBannerList" },
     { title: "News", navigateTo: "AdminNewsList" },
     // { title: "Testing Home", navigateTo: "Home" },
+    { title: "Coursework", navigateTo: "AdminCourseworkList" },
+    { title: "Timetable", navigateTo: "" },
+    { title: "Banner", navigateTo: "" },
+    { title: "News", navigateTo: "" },
     { title: "Log Out", navigateTo: "auth" },
   ]
 

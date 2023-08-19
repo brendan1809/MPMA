@@ -23,6 +23,7 @@ export const DropdownPicker = (props: DropDownPickerProps) => {
         justifyContent: "center",
         marginBottom: 6,
         paddingRight: 10,
+        minHeight: 40,
       }}
       dropDownContainerStyle={{
         width: 170,

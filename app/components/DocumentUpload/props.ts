@@ -1,3 +1,4 @@
 export type DocumentUploadProps = {
-    onUpload: (fileUri: string) => void;
-  };
+  setFile: any
+  file: any
+}
