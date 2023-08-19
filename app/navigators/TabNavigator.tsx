@@ -62,7 +62,7 @@ export function TabNavigator() {
         options={{
           tabBarLabel: translate("userNavigator.course"),
           tabBarIcon: ({ focused }) => (
-            <Icon name="users" color={focused ? colors.primary : "red"} size={30} />
+            <Icon name="users" color={focused ? colors.primary : "grey"} size={30} />
           ),
         }}
       />

@@ -1,6 +1,6 @@
 import React from "react"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { CourseworkScreen, SubmissionScreen, LectureScreen, AssignmentScreen, StudentGradingScreen, GradingSelectScreen, TeacherTimetableScreen } from "app/screens"
+import { CourseworkScreen, SubmissionScreen, LectureScreen, AssignmentScreen, StudentGradingScreen, GradingSelectScreen, TeacherTimetableScreen, NewsDetailScreen } from "app/screens"
 
 export type TeacherStackParamList = {
   Coursework: undefined
@@ -10,6 +10,7 @@ export type TeacherStackParamList = {
   StudentGrading: undefined
   GradingSelect: undefined
   TeacherTimetable: undefined
+  NewsDetail: undefined
   // Screens below are for admin, currently for testing purpose
   // AddNews: undefined
   // AddBanners: undefined
@@ -37,6 +38,7 @@ export const TeacherStack = () => {
       <Stack.Screen name="StudentGrading" component={StudentGradingScreen} options={{ title: "Student Grading List" }} />
       <Stack.Screen name="GradingSelect" component={GradingSelectScreen} options={{ title: "Student 1" }} />
       <Stack.Screen name="TeacherTimetable" component={TeacherTimetableScreen} options={{ title: "Timetable" }} />
+      <Stack.Screen name="NewsDetail" component={NewsDetailScreen} options={{ title: "News Detail " }} />
       {/* Screens below are for admin, currently for testing purpose */}
       {/* <Stack.Screen name="AddNews" component={AddNewsScreen} options={{ title: "Add News" }} />
       <Stack.Screen name="NewsList" component={NewsListScreen} options={{ title: "News List" }} />

@@ -42,26 +42,9 @@ export const CourseworkScreen = ({ navigation }) => {
           }}
         />
         {/* The button Below should be implemented in the tab */}
-        <Button
-          title="Go to Timetable"
-          onPress={() => {
-            onNavigate("TeacherTimetable")
-          }}
-        />
-        {/* The button Below should be implemented in Admin */}
-        <Button
-          title="Go to News"
-          onPress={() => {
-            onNavigate("NewsList")
-          }}
-        />
-        {/* The button Below should be implemented in Admin */}
-        <Button
-          title="Go to Banners"
-          onPress={() => {
-            onNavigate("AdminStack")
-          }}
-        />
+        <Button title="Go to Timetable" onPress={() => {
+          onNavigate("TeacherTimetable")
+        }} />
       </View>
     </Screen>
   )
