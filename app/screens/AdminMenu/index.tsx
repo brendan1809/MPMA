@@ -21,7 +21,7 @@ export const AdminMenu = observer(() => {
     { title: "Timetable", navigateTo: "" },
     { title: "Banner", navigateTo: "AdminBannerList" },
     { title: "News", navigateTo: "AdminNewsList" },
-    { title: "Log Out", navigateTo: "auth" },
+    { title: "Log Out", navigateTo: "Splash" },
   ]
 
   return (
