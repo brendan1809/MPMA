@@ -10,7 +10,7 @@ import { useNavigation, useRoute } from "@react-navigation/native"
 import storage from "@react-native-firebase/storage"
 import ImageCropPicker from "react-native-image-crop-picker"
 
-export const AdminBannerListEdit = () => {
+export const AdminNewsListEdit = () => {
   const route = useRoute()
   const routeFrom = route?.params?.routeFrom || ""
   const editData = route?.params?.data
@@ -22,9 +22,9 @@ export const AdminBannerListEdit = () => {
   const onSubmit = async (data) => {
     setLoading(true)
     if (routeFrom === "add") {
-      await addBanner(data)
+      await addNews(data)
     } else {
-      await updateBanner(data)
+      await updateNews(data)
     }
   }
 
@@ -33,7 +33,7 @@ export const AdminBannerListEdit = () => {
       includeBase64: true,
       cropping: true,
     }).then(async (image) => {
-      const storageRef = storage().ref(`/banners/${image.filename}`)
+      const storageRef = storage().ref(`/news/${image.filename}`)
       await storageRef.putFile(image.path, { contentType: image.mime })
 
       const downloadURL = await storageRef.getDownloadURL()
@@ -44,7 +44,7 @@ export const AdminBannerListEdit = () => {
 
   useEffect(() => {
     navigation.setOptions({
-      headerTitle: routeFrom === "add" ? "Add Banner" : "Edit Banner",
+      headerTitle: routeFrom === "add" ? "Add News" : "Edit News",
     })
     if (routeFrom === "edit") {
       setValue("title", editData?.title)
@@ -53,18 +53,20 @@ export const AdminBannerListEdit = () => {
     }
   }, [])
 
-  const updateBanner = async (data) => {
+  const updateNews = async (data) => {
     try {
-      const { thumbnail } = data
+      const { title, description, thumbnail } = data
       // If in edit mode, get the uid of the user to update
-      const bannerId = editData.id
+      const newsId = editData.id
 
       // Reference the Firestore collection for users and get the specific user's document reference
-      const userRef = firestore().collection("banners").doc(bannerId)
+      const userRef = firestore().collection("news").doc(newsId)
 
       // Use the 'update()' method to update the user document with the new data
       await userRef.update({
         thumbnail,
+        title,
+        description
       })
 
       flash("success", "Banner updated successfully")
@@ -74,27 +76,29 @@ export const AdminBannerListEdit = () => {
     }
   }
 
-  const addBanner = async (data) => {
-    const { thumbnail } = data
+  const addNews = async (data) => {
+    const { thumbnail, title, description } = data
     try {
-      const bannerRef = await firestore().collection("banners").doc()
-      const bannerId = bannerRef.id
+      const newsRef = await firestore().collection("news").doc()
+      const newsId = newsRef.id
 
       // Use FieldValue.serverTimestamp() to get the server's timestamp
       const timestamp = firestore.FieldValue.serverTimestamp();
 
-      await bannerRef
+      await newsRef
         .set({
-          id: bannerId,
+          id: newsId,
+          title,
+          description,
           thumbnail,
           createdAt: timestamp
         })
         .then(async () => {
-          flash("success", "Banner create successfully")
+          flash("success", "news create successfully")
           navigation.goBack()
         })
         .catch(() => {
-          flash("error", "Error storing banner details")
+          flash("error", "Error storing news details")
         })
         .finally(() => {
           setLoading(false)
@@ -107,7 +111,55 @@ export const AdminBannerListEdit = () => {
   return (
     <Screen preset="scroll">
       <View style={style.container}>
-        <Text style={style.fieldTitle}>{"Banner Picture"}</Text>
+        <Controller
+          name="title"
+          control={control}
+          rules={{
+            required: "This field is required",
+          }}
+          render={({ field: { onChange, value }, fieldState: { error } }) => {
+            return (
+              <>
+                <TextInput
+                  error={error}
+                  errorMessage={error?.message}
+                  title={"Title"}
+                  value={value}
+                  onChangeText={onChange}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  placeholder={"Please enter a title"}
+                />
+              </>
+            )
+          }}
+        />
+        <Controller
+          name="description"
+          control={control}
+          rules={{
+            required: "This field is required",
+          }}
+          render={({ field: { onChange, value }, fieldState: { error } }) => {
+            return (
+              <>
+                <TextInput
+                  error={error}
+                  errorMessage={error?.message}
+                  title={"Description"}
+                  value={value}
+                  onChangeText={onChange}
+                  autoCapitalize="none"
+                  multiline={true}
+                  autoCorrect={false}
+                  placeholder={"Please enter a description"}
+                  style={style.phoneNumberInputStyle}
+                />
+              </>
+            )
+          }}
+        />
+        <Text style={style.fieldTitle}>{"News Picture"}</Text>
         <Controller
           name="thumbnail"
           rules={{
@@ -125,7 +177,6 @@ export const AdminBannerListEdit = () => {
                         maxWidth: Dimensions.get("screen").height * 0.3,
                       }}
                       onPress={() => {
-                        console.log("123")
                         uploadImage()
                       }}
                     >

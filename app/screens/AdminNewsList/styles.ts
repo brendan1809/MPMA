@@ -28,7 +28,7 @@ export const style = StyleSheet.create({
     width: 60,
   },
   floatingButtonText: { color: colors.white, fontSize: 30, fontWeight: "bold" },
-  image: { height: "100%", width: "100%" },
+  image: { height: 100, width: 100 },
   logoViewContainer: {
     alignSelf: "flex-end",
     flexDirection: "row",

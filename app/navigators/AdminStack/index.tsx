@@ -9,8 +9,12 @@ import {
   AdminLecturerListEditScreen,
   AdminLecturerListScreen,
   AdminMenu,
+  AdminNewsListEdit,
+  AdminNewsListScreen,
   AdminStudentListEdit,
   AdminStudentListScreen,
+  HomeScreen,
+  NewsDetailScreen,
 } from "app/screens"
 
 export type AdminParamList = {
@@ -23,6 +27,11 @@ export type AdminParamList = {
   AdminCourseListEdit: undefined
   AdminBannerList: undefined
   AdminBannerListEdit: undefined
+  AdminNewsList: undefined
+  AdminNewsListEdit: undefined
+  // testing
+  // Home: undefined
+  // NewsDetail: undefined
 }
 const Stack = createNativeStackNavigator<AdminParamList>()
 
@@ -63,6 +72,15 @@ export const AdminStack = () => {
         options={{ title: "Banner List" }}
       />
       <Stack.Screen name="AdminBannerListEdit" component={AdminBannerListEdit} />
+      <Stack.Screen
+        name="AdminNewsList"
+        component={AdminNewsListScreen}
+        options={{ title: "News List" }}
+      />
+      <Stack.Screen name="AdminNewsListEdit" component={AdminNewsListEdit} />
+      {/* Testing */}
+      {/* <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="NewsDetail" component={NewsDetailScreen} options={{ title: "News Detail" }} /> */}
     </Stack.Navigator>
   )
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-color-literals */
 import { StyleSheet } from "react-native"
 
 export const style = StyleSheet.create({
@@ -6,11 +7,17 @@ export const style = StyleSheet.create({
     alignItems: "center",
     // justifyContent: "center",
     // minHeight: Dimensions.get("screen").height - 60,
-    padding: 20,
+    paddingHorizontal: 20,
   },
   flex: { flex: 1 },
   headingText: {
+    color: "black",
     fontSize: 25,
-    marginVertical: 10
-  }
+    fontWeight: "bold",
+  },
+  text: {
+    color: "black",
+    fontSize: 16,
+    marginVertical: 10,
+  },
 })

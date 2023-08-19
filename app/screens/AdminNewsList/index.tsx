@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import { Screen, Text, TextInput } from "app/components"
 import React, { useEffect, useState } from "react"
 
@@ -9,36 +10,38 @@ import flash from "app/config/flash"
 import { useIsFocused, useNavigation } from "@react-navigation/native"
 import { colors } from "app/theme"
 
-export const AdminBannerListScreen = () => {
+export const AdminNewsListScreen = () => {
   const [loading, setLoading] = useState(false)
-  const [bannerList, setBannerList] = useState([])
+  const [newsList, setNewsList] = useState([])
+  const [searchText, setSearchText] = useState("")
   const navigation = useNavigation()
   const isFocused = useIsFocused()
 
-  const fetchBanners = async (searchName?: string) => {
+  const fetchNews = async (searchName?: string) => {
     setLoading(true)
     try {
-      const bannersCollectionRef = firestore().collection("banners")
+      const newsCollectionRef = firestore().collection("news")
 
       // Construct the query to fetch all banners
-      const query = bannersCollectionRef
+      const query = newsCollectionRef
 
       // Get the query results
       const querySnapshot = await query.get()
 
       // Process the fetched documents
-      const banners = []
+      const news = []
       querySnapshot.forEach((doc) => {
-        banners.push(doc.data())
+        news.push(doc.data())
       })
 
       // Perform partial search on the client-side
-      const filteredBanners = banners.filter((banner) =>
-        banner.title?.toLowerCase().includes(searchName?.toLowerCase()),
+      const filteredNews = news.filter((singleNews) =>
+        singleNews.title?.toLowerCase().includes(searchName?.toLowerCase()),
       )
 
       // Update the users state with filtered results
-      setBannerList(searchName ? filteredBanners : banners)
+      setNewsList(searchName ? filteredNews : news)
+      console.log(news)
       setLoading(false)
     } catch (error) {
       setLoading(false)
@@ -46,38 +49,49 @@ export const AdminBannerListScreen = () => {
     }
   }
 
-  const deleteBanner = async (bannerId) => {
+  const deleteNews = async (newsId) => {
     setLoading(true)
     try {
       // Reference the Firestore collection for banners
-      const bannersCollectionRef = firestore().collection("banners")
+      const newsCollectionRef = firestore().collection("news")
 
       // Delete the user document based on the banner ID
-      await bannersCollectionRef.doc(bannerId).delete()
+      await newsCollectionRef.doc(newsId).delete()
 
       // After successful deletion, fetch the updated banners
-      flash("success", "Delete banner successfully")
-      fetchBanners()
+      flash("success", "Delete news successfully")
+      fetchNews()
       setLoading(false)
     } catch (error) {
       setLoading(false)
-      flash("error", "Failed to delete banner")
+      flash("error", "Failed to delete news")
     }
   }
 
   useEffect(() => {
     // Fetch banners initially (without search)
-    fetchBanners()
+    fetchNews()
   }, [isFocused])
 
   return (
     <Screen>
       <View style={style.container}>
+        <TextInput
+          returnKeyType="search"
+          autoComplete="off"
+          placeholder="Search by title"
+          value={searchText}
+          onChangeText={setSearchText}
+          containerStyle={style.searchContainer}
+          onSubmitEditing={() => {
+            fetchNews(searchText)
+          }}
+        />
         {loading ? (
           <ActivityIndicator size={"large"} color={"white"} />
         ) : (
           <FlatList
-            data={bannerList}
+            data={newsList}
             ListEmptyComponent={() => {
               return (
                 <View style={style.emptyContainer}>
@@ -91,13 +105,14 @@ export const AdminBannerListScreen = () => {
                   <View style={style.row}>
                     <Image source={{ uri: item?.thumbnail }} style={style.image} />
                     <View style={style.textContainer}>
-                      <Text style={{ color: colors.white }}>{item.title}</Text>
+                      <Text style={{ color: colors.white, marginLeft: 10 }}>Title: {item.title}</Text>
+                      <Text style={{ color: colors.white, marginLeft: 10 }}>Published: {item.createdAt.toDate().toLocaleDateString()}</Text>
                     </View>
                   </View>
                   <View style={style.logoViewContainer}>
                     <TouchableOpacity
                       onPress={() =>
-                        navigation.navigate("AdminBannerListEdit", {
+                        navigation.navigate("AdminNewsListEdit", {
                           routeFrom: "edit",
                           data: item,
                         })
@@ -118,7 +133,7 @@ export const AdminBannerListScreen = () => {
                             {
                               text: "Confirm",
                               onPress: async () => {
-                                deleteBanner(item?.id)
+                                deleteNews(item?.id)
                               },
                             },
                           ],
@@ -136,7 +151,7 @@ export const AdminBannerListScreen = () => {
         )}
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate("AdminBannerListEdit", { routeFrom: "add" })}
+        onPress={() => navigation.navigate("AdminNewsListEdit", { routeFrom: "add" })}
         style={style.floatingButton}
       >
         <Text style={style.floatingButtonText}>+</Text>

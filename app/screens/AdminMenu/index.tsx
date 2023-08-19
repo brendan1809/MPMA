@@ -18,7 +18,8 @@ export const AdminMenu = observer(() => {
     { title: "Course", navigateTo: "AdminCourseList" },
     { title: "Coursework", navigateTo: "" },
     { title: "Banner", navigateTo: "AdminBannerList" },
-    { title: "News", navigateTo: "" },
+    { title: "News", navigateTo: "AdminNewsList" },
+    // { title: "Testing Home", navigateTo: "Home" },
     { title: "Log Out", navigateTo: "auth" },
   ]
 
