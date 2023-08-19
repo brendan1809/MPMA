@@ -105,8 +105,12 @@ export const AdminNewsListScreen = () => {
                   <View style={style.row}>
                     <Image source={{ uri: item?.thumbnail }} style={style.image} />
                     <View style={style.textContainer}>
-                      <Text style={{ color: colors.white, marginLeft: 10 }}>Title: {item.title}</Text>
-                      <Text style={{ color: colors.white, marginLeft: 10 }}>Published: {item.createdAt.toDate().toLocaleDateString()}</Text>
+                      <Text style={{ color: colors.white, marginLeft: 10 }}>
+                        Title: {item.title}
+                      </Text>
+                      <Text style={{ color: colors.white, marginLeft: 10 }}>
+                        Published: {item.createdAt.toDate().toLocaleDateString()}
+                      </Text>
                     </View>
                   </View>
                   <View style={style.logoViewContainer}>

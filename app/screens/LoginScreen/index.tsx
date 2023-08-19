@@ -149,9 +149,6 @@ export const LoginScreen = ({ navigation }) => {
           style={style.button}
           title="Login"
           onPress={handleSubmit(onSubmit)}
-          // onPress={() => {
-          //   navigation.navigate("AdminStack")
-          // }}
         />
         <TouchableOpacity
           onPress={() => {
