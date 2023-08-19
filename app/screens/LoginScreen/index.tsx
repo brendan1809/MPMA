@@ -40,35 +40,41 @@ export const LoginScreen = ({ navigation }) => {
 
       if (userSnapshot.exists) {
         const userData = userSnapshot.data()
-        const { aboutUs, address, email, fullName, phoneNo, role, thumbnail, lat, lang } = userData
+        const { email, fullName, phoneNo, role, thumbnail, studentId } = userData
 
-        if (role === "teacher" || role === "admin") {
+        if (role === "admin") {
           authStore.update({
             id: uid,
-            aboutUs,
-            address,
             email,
             fullName,
             phoneNumber: phoneNo,
             role,
             thumbnail,
-            lat,
-            lang,
           })
-          navigation.reset({ index: 0, routes: [{ name: "backoffice" }] })
-        } else {
+          navigation.reset({ index: 0, routes: [{ name: "AdminStack" }] })
+        } else if (role === "lecturer") {
           authStore.update({
             id: uid,
-            address,
             email,
             fullName,
             phoneNumber: phoneNo,
             role,
+            thumbnail,
           })
-          navigation.reset({ index: 0, routes: [{ name: "app" }] })
+          navigation.reset({ index: 0, routes: [{ name: "TabNavigator" }] })
+        } else {
+          authStore.update({
+            id: uid,
+            email,
+            fullName,
+            phoneNumber: phoneNo,
+            studentId,
+            role,
+          })
+          navigation.reset({ index: 0, routes: [{ name: "TabNavigator" }] })
         }
 
-        flash("success", "User logged in successfully")
+        flash("success", "Logged in successfully")
       } else {
         flash("error", "Failed to login")
       }
@@ -142,10 +148,10 @@ export const LoginScreen = ({ navigation }) => {
           loading={loading}
           style={style.button}
           title="Login"
-          // onPress={handleSubmit(onSubmit)}
-          onPress={() => {
-            navigation.navigate("AdminStack")
-          }}
+          onPress={handleSubmit(onSubmit)}
+          // onPress={() => {
+          //   navigation.navigate("AdminStack")
+          // }}
         />
         <TouchableOpacity
           onPress={() => {
