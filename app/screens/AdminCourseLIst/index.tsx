@@ -51,6 +51,7 @@ export const AdminCourseListScreen = () => {
 
       // Delete the user document based on the user ID
       await courseCollectionRef.doc(courseId).delete()
+      await deleteCoursework(courseId)
       await removeStudentFromCourse(courseId)
       // After successful deletion, fetch the updated users
       flash("success", "Delete course successfully")
@@ -59,6 +60,25 @@ export const AdminCourseListScreen = () => {
     } catch (error) {
       setLoading(false)
       flash("error", "Failed to delete course")
+    }
+  }
+
+  const deleteCoursework = async (courseId) => {
+    setLoading(true)
+    try {
+      // Reference the Firestore collection for users
+      const courseworkCollectionRef = firestore().collection("coursework")
+
+      // Delete the user document based on the user ID
+      const querySnapshot = await courseworkCollectionRef.where("courseId", "==", courseId).get()
+      querySnapshot.forEach(async (doc) => {
+        await doc.ref.delete()
+      })
+      // After successful deletion, fetch the updated users
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
+      flash("error", "Failed to delete coursework")
     }
   }
 
