@@ -79,15 +79,14 @@ export const HomeScreen = () => {
 
   return (
     <Screen style={style.flex} preset="auto">
-      <SafeAreaView style={style.container}>
+      <View style={style.container}>
         <Carousel
           loop
-          width={widthWithPadding}
+          width={width}
           height={width / 2}
           autoPlay={true}
           data={bannerList} // add in Data
           scrollAnimationDuration={2000}
-          // onSnapToItem={(index) => console.log('current index:', index)}
           renderItem={({ item }) => (
             <View
               style={{
@@ -102,21 +101,21 @@ export const HomeScreen = () => {
         />
         <Text style={style.headingText}>News</Text>
         <View style={{ width: "100%" }}>
-          {/* {newsList.map((newsItem, index) => (
+          {newsList.map((newsItem, index) => (
             <NewsCard
               key={index}
-              imageUrl={newsItem.thumbnail}
-              title={newsItem.title}
-              datePublished={newsItem.createdAt.toDate().toLocaleDateString()}
+              imageUrl={newsItem?.thumbnail}
+              title={newsItem?.title}
+              datePublished={newsItem?.createdAt.toDate().toLocaleDateString()}
               onPress={() => {
                 navigation.navigate("NewsDetail", {
                   data: newsItem,
                 })
               }}
             />
-          ))} */}
+          ))}
         </View>
-      </SafeAreaView>
+      </View>
     </Screen>
   )
 }
