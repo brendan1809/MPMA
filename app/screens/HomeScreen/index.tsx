@@ -4,11 +4,11 @@ import { Button, NewsCard, Screen, Text, ImagePicker } from "app/components"
 import React, { useEffect, useState } from "react"
 import { Dimensions, View, Image } from "react-native"
 import { style } from "./styles"
-import Carousel from 'react-native-reanimated-carousel';
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useIsFocused, useNavigation } from "@react-navigation/native";
-import firestore from '@react-native-firebase/firestore';
-import flash from "app/config/flash";
+import Carousel from "react-native-reanimated-carousel"
+import { SafeAreaView } from "react-native-safe-area-context"
+import { useIsFocused, useNavigation } from "@react-navigation/native"
+import firestore from "@react-native-firebase/firestore"
+import flash from "app/config/flash"
 
 export const HomeScreen = () => {
   const [loading, setLoading] = useState(false)
@@ -17,8 +17,8 @@ export const HomeScreen = () => {
   const navigation = useNavigation()
   const isFocused = useIsFocused()
 
-  const width = Dimensions.get('window').width
-  const widthWithPadding = width - 2 * 20;
+  const width = Dimensions.get("window").width
+  const widthWithPadding = width - 2 * 20
 
   const fetchBanners = async () => {
     setLoading(true)
@@ -72,9 +72,9 @@ export const HomeScreen = () => {
     Promise.all([fetchBanners(), fetchNews()])
       .then(() => setLoading(false))
       .catch((error) => {
-        setLoading(false);
-        console.error("Error fetching data:", error);
-      });
+        setLoading(false)
+        console.error("Error fetching data:", error)
+      })
   }, [isFocused])
 
   return (
@@ -93,7 +93,7 @@ export const HomeScreen = () => {
               style={{
                 flex: 1,
                 borderWidth: 1,
-                justifyContent: 'center',
+                justifyContent: "center",
               }}
             >
               <Image source={{ uri: item.thumbnail }} style={{ width: "100%", height: "100%" }} />
@@ -102,7 +102,7 @@ export const HomeScreen = () => {
         />
         <Text style={style.headingText}>News</Text>
         <View style={{ width: "100%" }}>
-          {newsList.map((newsItem, index) => (
+          {/* {newsList.map((newsItem, index) => (
             <NewsCard
               key={index}
               imageUrl={newsItem.thumbnail}
@@ -114,9 +114,9 @@ export const HomeScreen = () => {
                 })
               }}
             />
-          ))}
+          ))} */}
         </View>
       </SafeAreaView>
-    </Screen >
+    </Screen>
   )
 }

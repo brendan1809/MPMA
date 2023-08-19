@@ -34,7 +34,7 @@ export const AdminBannerListScreen = () => {
 
       // Perform partial search on the client-side
       const filteredBanners = banners.filter((banner) =>
-        banner.title?.toLowerCase().includes(searchName?.toLowerCase()),
+        banner?.title?.toLowerCase().includes(searchName?.toLowerCase()),
       )
 
       // Update the users state with filtered results
@@ -91,20 +91,10 @@ export const AdminBannerListScreen = () => {
                   <View style={style.row}>
                     <Image source={{ uri: item?.thumbnail }} style={style.image} />
                     <View style={style.textContainer}>
-                      <Text style={{ color: colors.white }}>{item.title}</Text>
+                      <Text style={{ color: colors.white }}>{item?.title}</Text>
                     </View>
                   </View>
                   <View style={style.logoViewContainer}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate("AdminBannerListEdit", {
-                          routeFrom: "edit",
-                          data: item,
-                        })
-                      }
-                    >
-                      <Icons name="edit" color="white" size={22} />
-                    </TouchableOpacity>
                     <TouchableOpacity
                       onPress={() => {
                         Alert.alert(

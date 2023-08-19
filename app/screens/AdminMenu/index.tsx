@@ -16,14 +16,11 @@ export const AdminMenu = observer(() => {
     { title: "Student", navigateTo: "AdminStudentList" },
     { title: "Lecturer", navigateTo: "AdminLecturerList" },
     { title: "Course", navigateTo: "AdminCourseList" },
-    { title: "Coursework", navigateTo: "" },
-    { title: "Banner", navigateTo: "AdminBannerList" },
-    { title: "News", navigateTo: "AdminNewsList" },
     // { title: "Testing Home", navigateTo: "Home" },
     { title: "Coursework", navigateTo: "AdminCourseworkList" },
     { title: "Timetable", navigateTo: "" },
-    { title: "Banner", navigateTo: "" },
-    { title: "News", navigateTo: "" },
+    { title: "Banner", navigateTo: "AdminBannerList" },
+    { title: "News", navigateTo: "AdminNewsList" },
     { title: "Log Out", navigateTo: "auth" },
   ]
 

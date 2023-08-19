@@ -32,7 +32,7 @@ export const style = StyleSheet.create({
   logoViewContainer: {
     alignSelf: "flex-end",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
     marginTop: 5,
     width: 60,
   },

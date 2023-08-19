@@ -71,6 +71,11 @@ export const AdminStack = () => {
       />
       <Stack.Screen name="AdminCourseListEdit" component={AdminCourseListEdit} />
       <Stack.Screen
+        name="AdminCourseworkList"
+        component={AdminCourseworkListScreen}
+        options={{ title: "Coursework List" }}
+      />
+      <Stack.Screen
         name="AdminBannerList"
         component={AdminBannerListScreen}
         options={{ title: "Banner List" }}
@@ -82,11 +87,7 @@ export const AdminStack = () => {
         options={{ title: "News List" }}
       />
       <Stack.Screen name="AdminNewsListEdit" component={AdminNewsListEdit} />
-     
-        name="AdminCourseworkList"
-        component={AdminCourseworkListScreen}
-        options={{ title: "Coursework List" }}
-      />
+
       <Stack.Screen name="AdminCourseworkListEdit" component={AdminCourseworkListEditScreen} />
       <Stack.Screen
         name="AdminCourseworkDetailList"
