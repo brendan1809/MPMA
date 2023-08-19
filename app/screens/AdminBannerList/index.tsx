@@ -9,87 +9,75 @@ import flash from "app/config/flash"
 import { useIsFocused, useNavigation } from "@react-navigation/native"
 import { colors } from "app/theme"
 
-export const AdminStudentListScreen = () => {
+export const AdminBannerListScreen = () => {
   const [loading, setLoading] = useState(false)
-  const [searchText, setSearchText] = useState("")
-  const [userList, setUserList] = useState([])
+  const [bannerList, setBannerList] = useState([])
   const navigation = useNavigation()
   const isFocused = useIsFocused()
 
-  const fetchUsers = async (searchName?: string) => {
+  const fetchBanners = async (searchName?: string) => {
     setLoading(true)
     try {
-      const usersCollectionRef = firestore().collection("users")
+      const bannersCollectionRef = firestore().collection("banners")
 
-      // Construct the query to fetch all users
-      const query = usersCollectionRef.where("role", "==", "student")
+      // Construct the query to fetch all banners
+      const query = bannersCollectionRef
 
       // Get the query results
       const querySnapshot = await query.get()
 
       // Process the fetched documents
-      const users = []
+      const banners = []
       querySnapshot.forEach((doc) => {
-        users.push(doc.data())
+        banners.push(doc.data())
       })
 
       // Perform partial search on the client-side
-      const filteredUsers = users.filter((user) =>
-        user.fullName?.toLowerCase().includes(searchName?.toLowerCase()),
+      const filteredBanners = banners.filter((banner) =>
+        banner.title?.toLowerCase().includes(searchName?.toLowerCase()),
       )
 
       // Update the users state with filtered results
-      setUserList(searchName ? filteredUsers : users)
+      setBannerList(searchName ? filteredBanners : banners)
       setLoading(false)
     } catch (error) {
       setLoading(false)
-      flash("error", "Failed to retrieve student")
+      flash("error", "Failed to retrieve banners")
     }
   }
 
-  const deleteUser = async (userId) => {
+  const deleteBanner = async (bannerId) => {
     setLoading(true)
     try {
-      // Reference the Firestore collection for users
-      const usersCollectionRef = firestore().collection("users")
+      // Reference the Firestore collection for banners
+      const bannersCollectionRef = firestore().collection("banners")
 
-      // Delete the user document based on the user ID
-      await usersCollectionRef.doc(userId).delete()
+      // Delete the user document based on the banner ID
+      await bannersCollectionRef.doc(bannerId).delete()
 
-      // After successful deletion, fetch the updated users
-      flash("success", "Delete student successfully")
-      fetchUsers()
+      // After successful deletion, fetch the updated banners
+      flash("success", "Delete banner successfully")
+      fetchBanners()
       setLoading(false)
     } catch (error) {
       setLoading(false)
-      flash("error", "Failed to delete student")
+      flash("error", "Failed to delete banner")
     }
   }
 
   useEffect(() => {
-    // Fetch users initially (without search)
-    fetchUsers()
+    // Fetch banners initially (without search)
+    fetchBanners()
   }, [isFocused])
 
   return (
     <Screen>
       <View style={style.container}>
-        <TextInput
-          returnKeyType="search"
-          autoComplete="off"
-          placeholder="Search by name"
-          value={searchText}
-          onChangeText={setSearchText}
-          containerStyle={style.searchContainer}
-          onSubmitEditing={() => {
-            fetchUsers(searchText)
-          }}
-        />
         {loading ? (
           <ActivityIndicator size={"large"} color={"white"} />
         ) : (
           <FlatList
-            data={userList}
+            data={bannerList}
             ListEmptyComponent={() => {
               return (
                 <View style={style.emptyContainer}>
@@ -103,16 +91,13 @@ export const AdminStudentListScreen = () => {
                   <View style={style.row}>
                     <Image source={{ uri: item?.thumbnail }} style={style.image} />
                     <View style={style.textContainer}>
-                      <Text style={{ color: colors.white }}>{item.fullName}</Text>
-                      <Text style={{ color: colors.white }}>{item.phoneNo}</Text>
-                      <Text style={{ color: colors.white }}>{item.email}</Text>
-                      <Text style={{ color: colors.white }}>{item.studentId}</Text>
+                      <Text style={{ color: colors.white }}>{item.title}</Text>
                     </View>
                   </View>
                   <View style={style.logoViewContainer}>
                     <TouchableOpacity
                       onPress={() =>
-                        navigation.navigate("AdminStudentListEdit", {
+                        navigation.navigate("AdminBannerListEdit", {
                           routeFrom: "edit",
                           data: item,
                         })
@@ -133,7 +118,7 @@ export const AdminStudentListScreen = () => {
                             {
                               text: "Confirm",
                               onPress: async () => {
-                                deleteUser(item?.uid)
+                                deleteBanner(item?.id)
                               },
                             },
                           ],
@@ -151,7 +136,7 @@ export const AdminStudentListScreen = () => {
         )}
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate("AdminStudentListEdit", { routeFrom: "add" })}
+        onPress={() => navigation.navigate("AdminBannerListEdit", { routeFrom: "add" })}
         style={style.floatingButton}
       >
         <Text style={style.floatingButtonText}>+</Text>

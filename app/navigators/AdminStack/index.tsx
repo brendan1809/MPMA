@@ -2,6 +2,8 @@ import React from "react"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { HeaderBack } from "app/components"
 import {
+  AdminBannerListEdit,
+  AdminBannerListScreen,
   AdminCourseListEdit,
   AdminCourseListScreen,
   AdminCourseworkDetailListScreen,
@@ -10,8 +12,12 @@ import {
   AdminLecturerListEditScreen,
   AdminLecturerListScreen,
   AdminMenu,
+  AdminNewsListEdit,
+  AdminNewsListScreen,
   AdminStudentListEdit,
   AdminStudentListScreen,
+  HomeScreen,
+  NewsDetailScreen,
 } from "app/screens"
 
 export type AdminParamList = {
@@ -22,6 +28,11 @@ export type AdminParamList = {
   AdminLecturerListEdit: undefined
   AdminCourseList: undefined
   AdminCourseListEdit: undefined
+  AdminBannerList: undefined
+  AdminBannerListEdit: undefined
+  AdminNewsList: undefined
+  AdminNewsListEdit: undefined
+
   AdminCourseworkList: undefined
   AdminCourseworkListEdit: undefined
   AdminCourseworkDetailList: undefined
@@ -60,6 +71,18 @@ export const AdminStack = () => {
       />
       <Stack.Screen name="AdminCourseListEdit" component={AdminCourseListEdit} />
       <Stack.Screen
+        name="AdminBannerList"
+        component={AdminBannerListScreen}
+        options={{ title: "Banner List" }}
+      />
+      <Stack.Screen name="AdminBannerListEdit" component={AdminBannerListEdit} />
+      <Stack.Screen
+        name="AdminNewsList"
+        component={AdminNewsListScreen}
+        options={{ title: "News List" }}
+      />
+      <Stack.Screen name="AdminNewsListEdit" component={AdminNewsListEdit} />
+     
         name="AdminCourseworkList"
         component={AdminCourseworkListScreen}
         options={{ title: "Coursework List" }}
