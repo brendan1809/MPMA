@@ -86,12 +86,16 @@ export const AdminViewStudentCourseWork = () => {
                   <View style={style.row}>
                     <View style={style.textContainer}>
                       <Text style={{ color: colors.white }}>Name: {item?.studentName}</Text>
-                      <Text style={{ color: colors.white }}>
-                        Created At: {moment.unix(item?.createdAt.seconds).format("LLL")}
-                      </Text>
-                      <Text style={{ color: colors.white }}>
-                        Updated At: {moment.unix(item?.updatedAt.seconds).format("LLL")}
-                      </Text>
+                      {item?.createdAt && (
+                        <Text style={{ color: colors.white }}>
+                          Created At: {moment.unix(item?.createdAt.seconds).format("LLL")}
+                        </Text>
+                      )}
+                      {item?.updatedAt && (
+                        <Text style={{ color: colors.white }}>
+                          Updated At: {moment.unix(item?.updatedAt.seconds).format("LLL")}
+                        </Text>
+                      )}
                     </View>
                   </View>
                   <View style={style.logoViewContainer}>

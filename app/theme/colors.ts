@@ -44,6 +44,7 @@ export const colors = {
   error: "red",
   errorText: "red",
   buttonBackground: "#5375E2",
+  secondary: "black",
   buttonTitle: "white",
   lightGrey: "rgba(0,0,0,0.2)",
   placeholderText: "rgba(0,0,0,0.6)",

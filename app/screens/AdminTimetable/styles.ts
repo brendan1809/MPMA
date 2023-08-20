@@ -20,7 +20,7 @@ export const style = StyleSheet.create({
   flex: { flex: 1 },
   floatingButton: {
     alignItems: "center",
-    backgroundColor: colors.primary,
+    backgroundColor: colors.secondary,
     borderRadius: 9999,
     bottom: 30,
     height: 60,

@@ -18,7 +18,7 @@ export const style = StyleSheet.create({
   emptyTitle: { color: colors.black, fontSize: 24 },
   floatingButton: {
     alignItems: "center",
-    backgroundColor: colors.primary,
+    backgroundColor: colors.secondary,
     borderRadius: 9999,
     bottom: 30,
     height: 60,

@@ -49,6 +49,7 @@ export const AdminCourseListScreen = () => {
       // Reference the Firestore collection for users
       const courseCollectionRef = firestore().collection("course")
 
+      console.log(courseId)
       // Delete the user document based on the user ID
       await courseCollectionRef.doc(courseId).delete()
       await deleteCoursework(courseId)
@@ -182,7 +183,7 @@ export const AdminCourseListScreen = () => {
                             {
                               text: "Confirm",
                               onPress: async () => {
-                                deleteCourse(item?.uid)
+                                deleteCourse(item?.id)
                               },
                             },
                           ],
