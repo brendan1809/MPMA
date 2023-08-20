@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import {
   AdminCourseworkDetailListScreen,
   AdminCourseworkListEditScreen,
+  AdminViewStudentCourseWork,
   NewsDetailScreen,
   UserCourseworkScreen,
   UserSubmissionScreen,
@@ -61,6 +62,11 @@ export const CourseStack = () => {
         name="AdminCourseworkDetailList"
         component={AdminCourseworkDetailListScreen}
         options={{ title: "Coursework Detail List" }}
+      />
+      <Stack.Screen
+        name="AdminViewStudentCoursework"
+        component={AdminViewStudentCourseWork}
+        options={{ title: "Student Coursework" }}
       />
     </Stack.Navigator>
   )

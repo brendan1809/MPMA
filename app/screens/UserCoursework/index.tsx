@@ -105,7 +105,7 @@ export const UserCourseworkScreen = () => {
                           <View
                             style={[
                               style.logoViewContainer,
-                              authStore?.role === "student" && { width: 30 },
+                              authStore?.role === "student" ? { width: 30 } : { width: 80 },
                             ]}
                           >
                             {authStore?.role === "lecturer" && (
@@ -121,29 +121,40 @@ export const UserCourseworkScreen = () => {
                               </TouchableOpacity>
                             )}
                             {authStore?.role === "lecturer" ? (
-                              <TouchableOpacity
-                                onPress={() => {
-                                  Alert.alert(
-                                    "Warning",
-                                    "Are you sure you want to remove this?",
-                                    [
-                                      {
-                                        text: "Cancel",
-                                        style: "destructive",
-                                      },
-                                      {
-                                        text: "Confirm",
-                                        onPress: async () => {
-                                          deleteCoursework(item?.id)
+                              <>
+                                <TouchableOpacity
+                                  onPress={() => {
+                                    Alert.alert(
+                                      "Warning",
+                                      "Are you sure you want to remove this?",
+                                      [
+                                        {
+                                          text: "Cancel",
+                                          style: "destructive",
                                         },
-                                      },
-                                    ],
-                                    { cancelable: false },
-                                  )
-                                }}
-                              >
-                                <Icons name="delete" color="white" size={22} />
-                              </TouchableOpacity>
+                                        {
+                                          text: "Confirm",
+                                          onPress: async () => {
+                                            deleteCoursework(item?.id)
+                                          },
+                                        },
+                                      ],
+                                      { cancelable: false },
+                                    )
+                                  }}
+                                >
+                                  <Icons name="delete" color="white" size={22} />
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                  onPress={() =>
+                                    navigation.navigate("AdminViewStudentCoursework", {
+                                      data: { ...item, courseId },
+                                    })
+                                  }
+                                >
+                                  <Icons name="eyeo" color="white" size={22} />
+                                </TouchableOpacity>
+                              </>
                             ) : (
                               <>
                                 {method !== "slide" ? (

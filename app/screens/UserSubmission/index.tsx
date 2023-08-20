@@ -75,6 +75,7 @@ export const UserSubmissionScreen = () => {
         // Use the 'update()' method to update the "document" field with the new data
         await userRef.update({
           document, // Update the "document" field with the new value
+          updatedAt: new Date(),
         })
 
         flash("success", "Update successfully")
@@ -100,6 +101,8 @@ export const UserSubmissionScreen = () => {
           courseId,
           studentId: authStore?.id,
           courseworkId: editData?.id,
+          createdAt: new Date(),
+          updatedAt: new Date(),
         })
         .then(async () => {
           console.log("success")

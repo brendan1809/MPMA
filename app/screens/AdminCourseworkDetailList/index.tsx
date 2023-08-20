@@ -130,6 +130,15 @@ export const AdminCourseworkDetailListScreen = () => {
                             >
                               <Icons name="delete" color="white" size={22} />
                             </TouchableOpacity>
+                            <TouchableOpacity
+                              onPress={() =>
+                                navigation.navigate("AdminViewStudentCoursework", {
+                                  data: { ...item, courseId },
+                                })
+                              }
+                            >
+                              <Icons name="eyeo" color="white" size={22} />
+                            </TouchableOpacity>
                           </View>
                         </View>
                       </View>

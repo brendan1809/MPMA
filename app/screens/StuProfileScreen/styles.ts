@@ -13,10 +13,10 @@ export const style = StyleSheet.create({
     marginHorizontal: spacing.lg,
   },
   title: {
+    color: "red",
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginHorizontal: spacing.lg,
     marginVertical: spacing.md,
-  }
-
+  },
 })
