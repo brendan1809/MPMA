@@ -2,7 +2,15 @@
 import { Screen, Text, TextInput } from "app/components"
 import React, { useEffect, useState } from "react"
 
-import { ActivityIndicator, Alert, FlatList, Image, TouchableOpacity, View } from "react-native"
+import {
+  ActivityIndicator,
+  Alert,
+  FlatList,
+  Image,
+  Linking,
+  TouchableOpacity,
+  View,
+} from "react-native"
 import Icons from "@expo/vector-icons/AntDesign"
 import firestore from "@react-native-firebase/firestore"
 import { style } from "./styles"
@@ -137,15 +145,23 @@ export const UserCourseworkScreen = () => {
                                 <Icons name="delete" color="white" size={22} />
                               </TouchableOpacity>
                             ) : (
-                              <TouchableOpacity
-                                onPress={() =>
-                                  navigation.navigate("UserSubmission", {
-                                    data: { ...item, courseId },
-                                  })
-                                }
-                              >
-                                <Icons name="upload" color="white" size={22} />
-                              </TouchableOpacity>
+                              <>
+                                {method !== "slide" ? (
+                                  <TouchableOpacity
+                                    onPress={() =>
+                                      navigation.navigate("UserSubmission", {
+                                        data: { ...item, courseId },
+                                      })
+                                    }
+                                  >
+                                    <Icons name="upload" color="white" size={22} />
+                                  </TouchableOpacity>
+                                ) : (
+                                  <TouchableOpacity onPress={() => Linking.openURL(item?.document)}>
+                                    <Icons name="download" color="white" size={22} />
+                                  </TouchableOpacity>
+                                )}
+                              </>
                             )}
                           </View>
                         </View>
