@@ -49,7 +49,6 @@ export const LoginScreen = ({ navigation }) => {
             fullName,
             phoneNumber: phoneNo,
             role,
-            thumbnail,
           })
           navigation.reset({ index: 0, routes: [{ name: "AdminStack" }] })
         } else if (role === "lecturer") {
@@ -58,8 +57,8 @@ export const LoginScreen = ({ navigation }) => {
             email,
             fullName,
             phoneNumber: phoneNo,
-            role,
             thumbnail,
+            role,
           })
           navigation.reset({ index: 0, routes: [{ name: "TabNavigator" }] })
         } else {
@@ -68,6 +67,7 @@ export const LoginScreen = ({ navigation }) => {
             email,
             fullName,
             phoneNumber: phoneNo,
+            thumbnail,
             studentId,
             role,
           })

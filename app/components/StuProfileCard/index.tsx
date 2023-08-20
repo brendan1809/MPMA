@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, Image } from 'react-native';
-import StudentProfileCardProps from './props';
-import styles from './styles';
+import React from "react"
+import { View, Text, Image } from "react-native"
+import StudentProfileCardProps from "./props"
+import styles from "./styles"
 
 export const StudentProfileCard: React.FC<StudentProfileCardProps> = ({
   imageSrc,
@@ -10,11 +10,11 @@ export const StudentProfileCard: React.FC<StudentProfileCardProps> = ({
 }) => {
   return (
     <View style={styles.cardContainer}>
-      <Image source={{ uri: imageSrc }} style={styles.image} />
+      {imageSrc && <Image source={{ uri: imageSrc }} style={styles.image} />}
       <Text style={styles.name}>{studentName}</Text>
-      <Text style={styles.studentId}>Student ID: {studentId}</Text>
+      {studentId && <Text style={styles.studentId}>Student ID: {studentId}</Text>}
     </View>
-  );
-};
+  )
+}
 
 // export default StudentProfileCard;

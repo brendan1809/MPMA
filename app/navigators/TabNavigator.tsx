@@ -2,20 +2,15 @@ import React from "react"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { TextStyle, ViewStyle } from "react-native"
 import Icon from "react-native-vector-icons/FontAwesome"
-// import { NativeStackScreenProps } from "@react-navigation/native-stack"
-import { translate } from "../i18n"
 import { colors, spacing, typography } from "../theme"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import { TeacherStack } from "./TeacherStack"
-import { UserStack } from "./UserStack"
-import { HomeScreen } from "app/screens"
-// import { useNavigation } from "@react-navigation/native"
-// import { useStores } from "app/models"
+import { ProfileStack } from "./ProfileStack"
+import { HomeStack } from "./HomeStack"
+import { CourseStack } from "./CourseStack"
 
 export type TabNavigatorParamList = {
-  TeacherStack: undefined
-  // this is where to define the bottom tab navigation
-  UserStack: undefined
+  Profile: undefined
+  Course: undefined
   Home: undefined
 }
 
@@ -38,7 +33,7 @@ export function TabNavigator() {
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeStack}
         options={{
           tabBarLabel: "Home",
           tabBarIcon: ({ focused }) => (
@@ -47,20 +42,20 @@ export function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name="TeacherStack"
-        component={TeacherStack}
+        name="Course"
+        component={CourseStack}
         options={{
-          tabBarLabel: translate("teacherNavigator.course"),
+          tabBarLabel: "Course",
           tabBarIcon: ({ focused }) => (
             <Icon name="book" color={focused ? colors.primary : "grey"} size={30} />
           ),
         }}
       />
       <Tab.Screen
-        name="UserStack"
-        component={UserStack}
+        name="Profile"
+        component={ProfileStack}
         options={{
-          tabBarLabel: translate("userNavigator.course"),
+          tabBarLabel: "Profile",
           tabBarIcon: ({ focused }) => (
             <Icon name="users" color={focused ? colors.primary : "grey"} size={30} />
           ),

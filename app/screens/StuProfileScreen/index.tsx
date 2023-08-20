@@ -1,37 +1,34 @@
-import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
-import { StudentProfileCard, Text } from "app/components";
-import { style as styles } from "./styles";
+import React from "react"
+import { TouchableOpacity, View } from "react-native"
+import { StudentProfileCard, Text } from "app/components"
+import { style as styles } from "./styles"
+import flash from "app/config/flash"
+import { useStores } from "app/models"
 
-const StuProfileScreen: React.FC = () => {
-    return (
-      <View style={styles.container}>
-        <StudentProfileCard
-          imageSrc="https://img.freepik.com/premium-photo/image-young-asian-college-student-pink-background_296537-7068.jpg?size=626&ext=jpg&ga=GA1.2.809414224.1691305519&semt=sph" // Replace with actual image URL
-          studentName="John Doe"
-          studentId="123456"
-        />
-        <View style={styles.horizontalLine} />
+const StuProfileScreen: React.FC = ({ navigation }) => {
+  const { authStore } = useStores()
+  return (
+    <View style={styles.container}>
+      <StudentProfileCard
+        imageSrc={authStore?.thumbnail}
+        studentName={authStore?.fullName}
+        studentId={authStore?.studentId}
+      />
+      <View style={styles.horizontalLine} />
 
-        <TouchableOpacity>
-          <Text style={styles.title}>Edit Profile</Text>
-        </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.reset({ index: 0, routes: [{ name: "Splash" }] })
+          flash("success", "Log out successfully")
+          authStore?.resetAuthData()
+        }}
+      >
+        <Text style={styles.title}>Log out</Text>
+      </TouchableOpacity>
 
-        <View style={styles.horizontalLine} />
+      <View style={styles.horizontalLine} />
+    </View>
+  )
+}
 
-        <TouchableOpacity>
-          <Text style={styles.title}>Terms & Conditions</Text>
-        </TouchableOpacity>
-
-        <View style={styles.horizontalLine} />
-
-        <TouchableOpacity>
-          <Text style={styles.title}>Log out</Text>
-        </TouchableOpacity>
-
-        <View style={styles.horizontalLine} />
-      </View>
-    );
-  };
-  
-export default StuProfileScreen;
+export default StuProfileScreen

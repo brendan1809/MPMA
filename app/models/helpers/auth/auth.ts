@@ -8,6 +8,8 @@ export const AuthModel = types
   .model("Auth")
   .props({
     id: types.maybeNull(types.string),
+
+    studentId: types.maybeNull(types.string),
     accessToken: types.maybeNull(types.string),
     role: types.maybeNull(types.string),
     fullName: types.maybeNull(types.string),
@@ -26,6 +28,7 @@ export const AuthModel = types
   }))
   .actions((self) => ({
     resetAuthData() {
+      self.studentId = null
       self.email = null
       self.id = null
       self.thumbnail = null

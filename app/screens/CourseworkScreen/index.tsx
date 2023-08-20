@@ -35,16 +35,6 @@ export const CourseworkScreen = ({ navigation }) => {
           footerButtonText="Add Tutorial"
         />
         {/* The button Below should be implemented in the item is pressed */}
-        <Button
-          title="Go to Assignment"
-          onPress={() => {
-            onNavigate("Assignment")
-          }}
-        />
-        {/* The button Below should be implemented in the tab */}
-        <Button title="Go to Timetable" onPress={() => {
-          onNavigate("TeacherTimetable")
-        }} />
       </View>
     </Screen>
   )
